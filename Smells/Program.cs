@@ -1,4 +1,5 @@
 ﻿using System;
+using Smells.CodeSmellExamples;
 
 namespace Smells
 {
@@ -7,6 +8,9 @@ namespace Smells
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            DuplicateCode dup = new DuplicateCode();
+            
+            dup.sumElements();
         }
     }
 }

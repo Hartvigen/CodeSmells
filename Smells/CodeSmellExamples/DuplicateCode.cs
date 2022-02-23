@@ -29,12 +29,7 @@ namespace Smells.CodeSmellExamples
 
             int average_b = sum_b / 4;
             
-            Console.WriteLine("average a: " + average_a + "\n average b: " + average_b);
+            Console.WriteLine("average a: " + average_a + "\naverage b: " + average_b);
         }
-        
-
-
-        
-        
     }
 }
