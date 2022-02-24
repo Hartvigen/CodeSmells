@@ -3,3 +3,4 @@ obj/
 /packages/
 .vs/
 .idea/.idea.CodeSmells/
+.sonarqube/
