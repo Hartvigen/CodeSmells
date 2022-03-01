@@ -7,10 +7,10 @@ namespace Smells
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             DuplicateCode dup = new DuplicateCode();
             
-            dup.sumElements();
+            for (int x = 0; x < 100; x++)
+             dup.sumElements();
         }
     }
 }

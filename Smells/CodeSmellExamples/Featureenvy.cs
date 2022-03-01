@@ -33,4 +33,17 @@
             return streetName + ";" + city + ";" + state;
         }
     }
+
+    class FullUser
+    {
+        private string city = "Aalborg";
+        private string state = "Jylland";
+        private string streetName = "Frederik Bajers Vej";
+
+        public string GetFullAddress()
+        {
+            return streetName + ";" + city + ";" + state;
+        }
+        
     }
+}
