@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Smells.CodeSmellExamples
 {
-    public class DuplicateCode
+    class DuplicateCode
     {
         private List<int> list_a = new List<int>() {1, 3, 5, 7, 9};
         private List<int> list_b = new List<int>() {2, 4, 6, 8, 10};
