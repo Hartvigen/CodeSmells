@@ -3,18 +3,11 @@
 
     class ContactInfo
     {
-        public string GetStreetName()
-        {
-            return "Frederik Bajers Vej";
-        }
-        public string GetCity()
-        {
-            return "Aalborg";
-        }
-        public string GetState()
-        {
-            return "Jylland";
-        }
+        public string StreetName = "Frederik Bajers Vej";
+        public string City = "Aalborg";
+        public string State = "Jylland";
+        public string Zip = "9000";
+        public string Country = "Danmark";
     }
 
     class User
@@ -27,10 +20,7 @@
         }
         public string GetFullAddress(ContactInfo info)
         {
-            string city = info.GetCity();//1
-            string state = info.GetState();//2
-            string streetName = info.GetStreetName();//3
-            return streetName + ";" + city + ";" + state;
+            return info.StreetName + ";" + info.City + "," + info.Zip + ";" + info.State + ";" + info.Country;
         }
     }
 
