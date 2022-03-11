@@ -14,11 +14,11 @@
     {
         private ContactInfo _contactInfo;
 
-        User(ContactInfo contactInfo)
+        public User(ContactInfo contactInfo)
         {
             _contactInfo = contactInfo;
         }
-        public string GetFullAddress(ContactInfo info)
+        public string GetFullAddress()
         {
             return info.StreetName + ";" + info.City + "," + info.Zip + ";" + info.State + ";" + info.Country;
         }
