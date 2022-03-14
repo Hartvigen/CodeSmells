@@ -7,10 +7,13 @@ namespace Smells
     {
         static void Main(string[] args)
         {
-            DuplicateCode dup = new DuplicateCode();
-            
-            for (int x = 0; x < 100; x++)
-             dup.sumElements();
+            ContactInfo info = new ContactInfo();
+
+            for (int x = 0; x < 100000000; x++)
+            {
+                FullUser envy = new FullUser();
+                string y  = envy.GetFullAddress();
+            }
         }
     }
 }
