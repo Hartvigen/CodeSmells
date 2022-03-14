@@ -20,7 +20,7 @@
         }
         public string GetFullAddress()
         {
-            return info.StreetName + ";" + info.City + "," + info.Zip + ";" + info.State + ";" + info.Country;
+            return _contactInfo.StreetName + ";" + _contactInfo.City + "," + _contactInfo.Zip + ";" + _contactInfo.State + ";" + _contactInfo.Country;
         }
     }
 
