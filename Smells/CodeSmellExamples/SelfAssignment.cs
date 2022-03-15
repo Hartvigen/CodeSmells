@@ -1,8 +1,13 @@
 ﻿namespace Smells.CodeSmellExamples
 {
-    public class SelfAssignment
+    public abstract class SelfAssignmentBase
     {
-        public string SelfAssignmentGood()
+        public abstract string SelfAssignment();
+    }
+    
+    public class SelfAssignmentGood : SelfAssignmentBase
+    {
+        public override string SelfAssignment()
         {
             string a = "";
             string x = "Played College Ball you know";
@@ -16,8 +21,11 @@
 
             return a + x + y + z;
         }
+    }
 
-        public string SelfAssignmentSmell()
+    public class SelfAssignmentBad : SelfAssignmentBase
+    {
+        public override string SelfAssignment()
         {
             string a = "";
             string x = "Played College Ball you know ";

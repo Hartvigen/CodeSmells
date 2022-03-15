@@ -2,16 +2,24 @@
 
 namespace Smells.CodeSmellExamples
 {
-    public class DeadLocalStore
+    public abstract class DeadLocalStoreBase
     {
-        public double DeadLocalStoreGood(double radius)
+        public abstract double DeadLocalStore(double radius);
+    }
+    
+    public class DeadLocalStoreGood : DeadLocalStoreBase
+    {
+        public override double DeadLocalStore(double radius)
         {
             double pi = 3.14;
             
             return (pi * Math.Pow(2, radius));
         }
-        
-        public double DeadLocalStoreSmell(double radius)
+    }
+
+    public class DeadLocalStoreBad : DeadLocalStoreBase
+    {
+        public override double DeadLocalStore(double radius)
         {
             double pi = 3.14;
             double notPi = 4.13;

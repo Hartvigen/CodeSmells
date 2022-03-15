@@ -3,18 +3,18 @@ using System.Runtime.CompilerServices;
 
 namespace Smells.CodeSmellExamples
 {
-    public class TypeChecking
+    public abstract class TypeCheckingBase
     {
-        
+        public abstract string getType();
     }
 
-    class EmployeeFull
+    class TypeCheckingBad : TypeCheckingBase
     {
         private bool salesman;
         private bool engineer;
         private int salary;
 
-        public string getType()
+        public override string getType()
         {
             if (salesman == engineer)
                 throw new Exception("Error, can't be both or neither");
@@ -26,7 +26,7 @@ namespace Smells.CodeSmellExamples
                 return "Error";
         }
 
-        EmployeeFull(bool salesman, bool engineer)
+        public TypeCheckingBad(bool salesman, bool engineer)
         {
             this.salesman = salesman;
             this.engineer = engineer;
@@ -34,30 +34,44 @@ namespace Smells.CodeSmellExamples
         }
     }
 
-    abstract class Employee
+    public abstract class Employee
     {
         private int salary;
 
-        public abstract string GetType();
+        public abstract string getType();
     }
 
-    class Engineer : Employee
+    public class Engineer : Employee
     {
         private int salary = 40000;
 
-        public override string GetType()
+        public override string getType()
         {
             return "engineer";
         }
     }
 
-    class Salesman : Employee
+    public class Salesman : Employee
     {
         private int salary = 100000;
 
-        public override string GetType()
+        public override string getType()
         {
             return "salesman";
+        }
+    }
+
+    public class TypeCheckingGood : TypeCheckingBase
+    {
+        private Employee obj;
+        public override string getType()
+        {
+            return obj.getType();
+        }
+
+        public TypeCheckingGood(Employee type)
+        {
+            obj = type;
         }
     }
 }

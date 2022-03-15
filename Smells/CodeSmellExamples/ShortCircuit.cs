@@ -1,20 +1,14 @@
 
 namespace Smells.CodeSmellExamples
 {
-    public class ShortCircuit
+    public abstract class ShortCircuitBase
     {
-        public void ShortCircuitBad()
-        {
-            int a = 100;
-            int b = 1000;
-            int c = 5;
+        public abstract void ShortCircuit();
+    }
 
-            if (b > a | a > c) a = a * c;
-
-            if (a > b & b == 1000) a = a * c;
-        }
-
-        public void ShortCircuitGood()
+    public class ShortCircuitGood : ShortCircuitBase
+    {
+        public override void ShortCircuit()
         {
             int a = 100;
             int b = 1000;
@@ -23,6 +17,20 @@ namespace Smells.CodeSmellExamples
             if (b > a || a > c) a = a * c;
 
             if (a > b && b == 1000) a = a * c;
+        }
+    }
+
+    public class ShortCircuitBad : ShortCircuitBase
+    {
+        public override void ShortCircuit()
+        {
+            int a = 100;
+            int b = 1000;
+            int c = 5;
+
+            if (b > a | a > c) a = a * c;
+
+            if (a > b & b == 1000) a = a * c;
         }
     }
 }

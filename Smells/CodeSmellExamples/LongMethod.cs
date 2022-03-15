@@ -2,11 +2,17 @@ using System;
 
 namespace Smells.CodeSmellExamples
 {
-    public class LongMethodBad
+    public abstract class LongMethodBase
+    {
+        public abstract void Compute();
+    }
+
+    public class LongMethodBad : LongMethodBase
     {
         private int[] arr;
         private int ARR_SIZE = 10;
-        public void Compute() {
+        public override void Compute() 
+        {
             // make array
             Random rand = new Random();
 
@@ -14,7 +20,7 @@ namespace Smells.CodeSmellExamples
 
             for (int i = 0; i < ARR_SIZE; i++) arr[i] = rand.Next(50);
 
-            Console.WriteLine("{ " + String.Join(", ", arr) + " }");
+            //Console.WriteLine("{ " + String.Join(", ", arr) + " }");
 
             // sort array
     
@@ -29,7 +35,7 @@ namespace Smells.CodeSmellExamples
                 arr[i] = temp;
             }
 
-            Console.WriteLine("{ " + String.Join(", ", arr) + " }");
+            //Console.WriteLine("{ " + String.Join(", ", arr) + " }");
 
             // sum array
             int total = 0;
@@ -47,7 +53,7 @@ namespace Smells.CodeSmellExamples
                 arr[ARR_SIZE - i - 1] = lower;
             }
 
-            Console.WriteLine("{ " + String.Join(", ", arr) + " }");
+            //Console.WriteLine("{ " + String.Join(", ", arr) + " }");
 
             // multiply array by x
             int x = 5;
@@ -60,29 +66,31 @@ namespace Smells.CodeSmellExamples
         }
     }
 
-    public class LongMethodGood {
+    public class LongMethodGood : LongMethodBase
+    {
         private int[] arr;
         private int ARR_SIZE = 10;
 
-        public void Compute() {
+        public override void Compute() {
             CreateArray();
-            PrintArray();
+            //PrintArray();
 
             BubbleSort();
-            PrintArray();
+            //PrintArray();
 
             SumArray();
 
             InvertArray();
-            PrintArray();
+            //PrintArray();
 
             MultiplyArray();
-            PrintArray();
+            //PrintArray();
 
             arr = null;
         }
 
-        public void CreateArray() {
+        public void CreateArray() 
+        {
             Random rand = new Random();
 
             arr = new int[ARR_SIZE];
@@ -90,11 +98,13 @@ namespace Smells.CodeSmellExamples
             for (int i = 0; i < ARR_SIZE; i++) arr[i] = rand.Next(50);
         }
 
-        public void PrintArray() {
+        public void PrintArray() 
+        {
             Console.WriteLine("{ " + String.Join(", ", arr) + " }");
         }
 
-        public void BubbleSort() {
+        public void BubbleSort() 
+        {
             for (int i = 0; i < ARR_SIZE - 1; i++) {
                 int min = i;
                 for (int j = i + 1; j < ARR_SIZE; j++)
@@ -107,13 +117,15 @@ namespace Smells.CodeSmellExamples
             }
         }
 
-        public void SumArray() {
+        public void SumArray() 
+        {
             int total = 0;
             for (int i = 0; i < ARR_SIZE; i++) 
                 total += arr[i];
         }
 
-        public void InvertArray() {
+        public void InvertArray() 
+        {
             int upper;
             int lower;
             for (int i = 0; i < ARR_SIZE / 2; i++) {
@@ -124,7 +136,8 @@ namespace Smells.CodeSmellExamples
             }
         }
 
-        public void MultiplyArray() {
+        public void MultiplyArray() 
+        {
             int x = 5;
             for (int i = 0; i < ARR_SIZE; i++) {
                 arr[i] = arr[i] * x;

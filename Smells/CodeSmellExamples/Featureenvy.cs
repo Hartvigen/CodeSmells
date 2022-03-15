@@ -1,5 +1,9 @@
 ﻿namespace Smells.CodeSmellExamples
 {
+    public abstract class FeatureEnvyBase
+    {
+        public abstract string GetFullAddress();
+    }
 
     class ContactInfo
     {
@@ -10,21 +14,21 @@
         public string Country = "Danmark";
     }
 
-    class User
+    class FeatureEnvyBad : FeatureEnvyBase
     {
         private ContactInfo _contactInfo;
 
-        public User(ContactInfo contactInfo)
+        public FeatureEnvyBad(ContactInfo contactInfo)
         {
             _contactInfo = contactInfo;
         }
-        public string GetFullAddress()
+        public override string GetFullAddress()
         {
             return _contactInfo.StreetName + ";" + _contactInfo.City + "," + _contactInfo.Zip + ";" + _contactInfo.State + ";" + _contactInfo.Country;
         }
     }
 
-    class FullUser
+    class FeatureEnvyGood : FeatureEnvyBase
     {
         private string city = "Aalborg";
         private string state = "Jylland";
@@ -32,7 +36,7 @@
         public string Zip = "9000";
         public string Country = "Danmark";
 
-        public string GetFullAddress()
+        public override string GetFullAddress()
         {
             return streetName + ";" + city + ";" + Zip + ";" + state + ";" + Country;
         }
