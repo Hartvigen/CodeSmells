@@ -29,10 +29,12 @@
         private string city = "Aalborg";
         private string state = "Jylland";
         private string streetName = "Frederik Bajers Vej";
+        public string Zip = "9000";
+        public string Country = "Danmark";
 
         public string GetFullAddress()
         {
-            return streetName + ";" + city + ";" + state;
+            return streetName + ";" + city + ";" + Zip + ";" + state + ";" + Country;
         }
         
     }
