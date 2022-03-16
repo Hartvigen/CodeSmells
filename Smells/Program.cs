@@ -1,6 +1,7 @@
 ﻿using System;
 using Smells.CodeSmellExamples;
 using Smells.CodeSmellDispatch;
+using Smells.CodeSmellConstants;
 
 namespace Smells
 {
@@ -17,17 +18,6 @@ namespace Smells
 
     class Args
     {
-        private string[] Choices = {
-            "dead-local-store",
-            "duplicate-code",
-            "feature-envy",
-            "god-class",
-            "long-method",
-            "self-assignment",
-            "short-circuit",
-            "type-checking"
-        };
-
         private string Smell;
         private string Variant;
 
@@ -44,7 +34,11 @@ namespace Smells
             } 
             else if (args.Length == 1)
             {
-                if (args[0] == "help") HelpText();
+                if (args[0] == "help") 
+                {
+                    HelpText();
+                    System.Environment.Exit(0);
+                }
                 else 
                 {
                     Console.WriteLine("Error: insufficient amount of arguments detected, exiting");
@@ -72,10 +66,10 @@ namespace Smells
             Console.WriteLine("Usage: Smells <code-smell> <variant>");
             Console.WriteLine("");
             Console.WriteLine("\t\thelp\t\tdisplay this help text");
-            Console.WriteLine("\t\tcode-smell\tthe code smell to run");
+            Console.WriteLine("\t\tcode-smell\tthe code smell to run (see list of available smells below)");
             Console.WriteLine("\t\tvariant\t\tthe variant of the code smell; 'good' or 'bad' [default: good]");
             Console.WriteLine("");
-            Console.WriteLine("Available smells: " + "{ " + String.Join(", ", Choices) + " }");
+            Console.WriteLine("Available smells: " + "{ " + String.Join(", ", CodeSmellConstants.Constants.CODE_SMELL_CHOICES) + " }");
         }
     }
 }

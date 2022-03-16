@@ -1,21 +1,11 @@
 using System;
 using Smells.CodeSmellExamples;
+using Smells.CodeSmellConstants;
 
 namespace Smells.CodeSmellDispatch
 {
     public class Dispatcher
     {
-        private string[] Choices = {
-            "dead-local-store",
-            "duplicate-code",
-            "feature-envy",
-            "god-class",
-            "long-method",
-            "self-assignment",
-            "short-circuit",
-            "type-checking"
-        };
-
         public void DispatchCodeSmell(string smell, string variant)
         {
             switch (smell)
@@ -50,7 +40,7 @@ namespace Smells.CodeSmellDispatch
                 default:
                     Console.WriteLine("Error: argument \"" + smell + "\" not recognized, please try again.");
                     Console.WriteLine("Available arguments are:");
-                    Console.WriteLine("{ " + String.Join(", ", Choices) + " }");
+                    Console.WriteLine("{ " + String.Join(", ", CodeSmellConstants.Constants.CODE_SMELL_CHOICES) + " }");
                     break;
             }
         }
