@@ -7,11 +7,11 @@
 
     class ContactInfo
     {
-        public string StreetName = "Frederik Bajers Vej";
-        public string City = "Aalborg";
-        public string State = "Jylland";
-        public string Zip = "9000";
-        public string Country = "Danmark";
+        public string streetName = "Frederik Bajers Vej";
+        public string city = "Aalborg";
+        public string state = "Jylland";
+        public string zip = "9000";
+        public string country = "Danmark";
     }
 
     class FeatureEnvyBad : FeatureEnvyBase
@@ -24,7 +24,7 @@
         }
         public override string GetFullAddress()
         {
-            return _contactInfo.StreetName + ";" + _contactInfo.City + "," + _contactInfo.Zip + ";" + _contactInfo.State + ";" + _contactInfo.Country;
+            return _contactInfo.streetName + ";" + _contactInfo.city + "," + _contactInfo.zip + ";" + _contactInfo.state + ";" + _contactInfo.country;
         }
     }
 
@@ -33,12 +33,12 @@
         private string city = "Aalborg";
         private string state = "Jylland";
         private string streetName = "Frederik Bajers Vej";
-        public string Zip = "9000";
-        public string Country = "Danmark";
+        public string zip = "9000";
+        public string country = "Danmark";
 
         public override string GetFullAddress()
         {
-            return streetName + ";" + city + ";" + Zip + ";" + state + ";" + Country;
+            return streetName + ";" + city + ";" + zip + ";" + state + ";" + country;
         }
         
     }
