@@ -3,13 +3,24 @@ namespace Smells.CodeSmellExamples
     public abstract class ParameterByValueBase
     {
         public abstract void ParameterByValue();
+        public void Compute(int a, int b)
+        {
+            int c = a * b;
+
+            if (a > b) c = c + b;
+
+            b = b * 2;
+        }
     }
 
     public class ParameterByValueGood : ParameterByValueBase
     {
         public override void ParameterByValue()
         {
-            throw new System.NotImplementedException();
+            int a = 100;
+            int b = 50;
+
+            Compute(a, b);
         }
     }
 
@@ -17,7 +28,7 @@ namespace Smells.CodeSmellExamples
     {
         public override void ParameterByValue()
         {
-            throw new System.NotImplementedException();
+            Compute(100, 50);
         }
     }
 }

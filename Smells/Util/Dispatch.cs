@@ -25,6 +25,9 @@ namespace Smells.CodeSmellDispatch
                 case "long-method":
                     RunLongMethod(variant);
                     break;
+                case "parameter-by-value":
+                    RunParameterByValue(variant);
+                    break;
                 case "repeated-conditionals":
                     RunRepeatedConditionals(variant);
                     break;
@@ -108,7 +111,15 @@ namespace Smells.CodeSmellDispatch
 
         private void RunParameterByValue(string variant)
         {
-            Console.WriteLine("Not implemented");
+            int iterations = 300000000; // 300M
+
+            ParameterByValueBase ParamByVal;
+            if (variant == "bad") ParamByVal = new ParameterByValueBad();
+            else ParamByVal = new ParameterByValueGood();
+
+            Console.WriteLine("Running code smell Parameter By Value, variant " + variant);
+            for (int i = 0; i < iterations; i++) ParamByVal.ParameterByValue();
+            Console.WriteLine("Done");
         }
 
         private void RunRepeatedConditionals(string variant)
