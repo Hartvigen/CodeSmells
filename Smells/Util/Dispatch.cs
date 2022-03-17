@@ -132,7 +132,15 @@ namespace Smells.CodeSmellDispatch
 
         private void RunRepeatedConditionals(string variant)
         {
-            Console.WriteLine("Not implemented");
+            int iterations = 200000000; // 200M
+
+            RepeatedConditionalsBase RepeatedCond;
+            if (variant == "bad") RepeatedCond = new RepeatedConditionalsBad();
+            else RepeatedCond = new RepeatedConditionalsGood();
+
+            Console.WriteLine("Running code smell Repeated Conditionals, variant " + variant);
+            for (int i = 0; i < iterations; i++) RepeatedCond.RepeatedConditionals();
+            Console.WriteLine("Done");
         }
 
         private void RunSelfAssignment(string variant)

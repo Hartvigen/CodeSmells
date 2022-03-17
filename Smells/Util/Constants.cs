@@ -8,6 +8,8 @@ namespace Smells.CodeSmellConstants
             "feature-envy",
             "god-class",
             "long-method",
+            "parameter-by-value",
+            "repeated-conditionals",
             "self-assignment",
             "short-circuit",
             "type-checking"

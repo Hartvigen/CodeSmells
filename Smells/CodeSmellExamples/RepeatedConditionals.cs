@@ -10,7 +10,16 @@ namespace Smells.CodeSmellExamples
     {
         public override void RepeatedConditionals()
         {
-            throw new System.NotImplementedException();
+            int a = 100;
+            int b = 200;
+            int c = 20;
+
+            if (a * c > b) {
+                b = b + a;
+                b = b * c;
+            }
+
+            a = a * c + b;
         }
     }
 
@@ -18,7 +27,19 @@ namespace Smells.CodeSmellExamples
     {
         public override void RepeatedConditionals()
         {
-            throw new System.NotImplementedException();
+            int a = 100;
+            int b = 200;
+            int c = 20;
+
+            if (a * c > b) {
+                b = b + a;
+            }
+
+            a = a * c + b;
+
+            if (a * c > b) {
+                b = b * c;
+            }
         }
     }
 }

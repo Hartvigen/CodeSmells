@@ -51,7 +51,7 @@ namespace Smells
                 Smell = args[0];
                 Variant = args[1];
 
-                if (Variant != "bad" || Variant != "good")
+                if (Variant != "bad" && Variant != "good")
                 {
                     Console.WriteLine("Variant \"" + Variant + "\" unrecognized, defaulting to good");
                     Variant = "good";
