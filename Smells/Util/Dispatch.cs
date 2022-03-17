@@ -93,7 +93,15 @@ namespace Smells.CodeSmellDispatch
 
         private void RunGodClass(string variant)
         {
-            Console.WriteLine("Not implemented");
+            int iterations = 50000000; // 50M
+
+            GodClassBase GodClass;
+            if (variant == "bad") GodClass = new GodClassBad();
+            else GodClass = new GodClassGood();
+            
+            Console.WriteLine("Running code smell God Class, variant " + variant);
+            for (int i = 0; i < iterations; i++) GodClass.GetCandidateInfo();
+            Console.WriteLine("Done");
         }
 
         private void RunLongMethod(string variant)
@@ -165,5 +173,6 @@ namespace Smells.CodeSmellDispatch
             for (int i = 0; i < iterations; i++) TypeChecking.getType();
             Console.WriteLine("Done");
         }
+        
     }
 }
