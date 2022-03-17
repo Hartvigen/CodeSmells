@@ -125,7 +125,7 @@ namespace Smells.CodeSmellExamples
             public Recruiter(int recruiterId, string recruiterName)
             {
                 this.recruiterId = recruiterId;
-                recruiterName = "John Doe";
+                this.recruiterName = recruiterName;
             }
         }
 
