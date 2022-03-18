@@ -93,7 +93,7 @@ namespace Smells.CodeSmellDispatch
 
         private void RunGodClass(string variant)
         {
-            int iterations = 50000000; // 50M
+            int iterations = 5000000; // 5M
 
             GodClassBase GodClass;
             if (variant == "bad") GodClass = new GodClassBad();
