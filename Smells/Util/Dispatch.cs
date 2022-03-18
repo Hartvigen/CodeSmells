@@ -132,7 +132,7 @@ namespace Smells.CodeSmellDispatch
 
         private void RunRepeatedConditionals(string variant)
         {
-            int iterations = 200000000; // 200M
+            int iterations = 500000000; // 500M
 
             RepeatedConditionalsBase RepeatedCond;
             if (variant == "bad") RepeatedCond = new RepeatedConditionalsBad();
