@@ -56,7 +56,7 @@ namespace Smells.CodeSmellExamples
             Candidate cand1 = new Candidate(1, "Mike", "Oxlong", "SpoonerStreet 14",
                 "Bachelor in Software Engineering", 4.9,
                 new List<string> {"McDonalds", "Ford Motors", "Google", "Amazon", "AVK"},
-                DateTime.Parse("03/16/2022 07:30:00"), 5,
+                new DateTime(2022, 3, 1, 9, 0, 0), 5,
                 "John Doe", 3, "Ray Pinas",
                 "Mike displays a lot of potential and enthusiasm, a training period of about 3 months will be required to get him into our system, but after that he should be a great asset to the company",
                 8000, 950000);
@@ -64,7 +64,7 @@ namespace Smells.CodeSmellExamples
             Candidate cand2 = new Candidate(2, "Ben", "Dover", "McAlleyStreet 3",
                 "Masters in Information Technology", 4.2,
                 new List<string> {"Subway", "John's computer parts", "TopData"},
-                DateTime.Parse("03/16/2022 09:15:00"), 5,
+                new DateTime(2022, 3, 1, 11, 0, 0), 5,
                 "John Doe", 3, "Ray Pinas",
                 "Ben is somewhat of a ditz, he came late to the meeting and refused to answer question in favor of throwing plant water in my face, very unproffesional",
                 25000, 950000);
@@ -72,7 +72,7 @@ namespace Smells.CodeSmellExamples
             Candidate cand3 = new Candidate(3, "Jenny", "Tallies", "Livingway 28",
                 "Bachelors in Computer Sceince", 4.6,
                 new List<string> {"Markus'", "Aalborg University", "Computer World", "Amazon"},
-                DateTime.Parse("03/16/2022 14:00:00"), 5,
+                 new DateTime(2022, 3, 1, 13, 0, 0), 5,
                 "John Doe", 7, "Wayne Kerr",
                 "Jeny sems to be vry niice and an good prson (Please note that Wayne is dyslexic)",
                 150000, 950000);
@@ -174,13 +174,13 @@ namespace Smells.CodeSmellExamples
 
             Interview interview1 = new Interview(recruiter1.recruiterId, interviewer1.interviewerId, cand1.id,
                 "Mike displays a lot of potential and enthusiasm, a training period of about 3 months will be required to get him into our system, but after that he should be a great asset to the company",
-                DateTime.Parse("03/16/2022 07:30:00"));
+                new DateTime(2022, 3, 1, 9, 0, 0));
             Interview interview2 = new Interview(recruiter1.recruiterId, interviewer1.interviewerId, cand2.id,
                 "Ben is somewhat of a ditz, he came late to the meeting and refused to answer question in favor of throwing plant water in my face, very unproffesional",
-                DateTime.Parse("03/16/2022 09:15:00"));
+                new DateTime(2022, 3, 1, 11, 0, 0));
             Interview interview3 = new Interview(recruiter1.recruiterId, interviewer2.interviewerId, cand3.id,
                 "Jeny sems to be vry niice and an good prson (Please note that Wayne is dyslexic)",
-                DateTime.Parse("03/16/2022 14:00:00"));
+                new DateTime(2022, 3, 1, 13, 0, 0));
 
 
             return interview1.interviewerRemarks + interview2.interviewerRemarks + interview3.interviewerRemarks;
