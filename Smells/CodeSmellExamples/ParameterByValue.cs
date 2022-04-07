@@ -20,7 +20,16 @@ namespace Smells.CodeSmellExamples
             int a = 100;
             int b = 50;
 
-            Compute(a, b);
+            Compute(ref a, ref b);
+        }
+
+        public void Compute(ref int a, ref int b)
+        {
+            int c = a * b;
+
+            if (a > b) c = c + b;
+
+            b = b * 2;
         }
     }
 
