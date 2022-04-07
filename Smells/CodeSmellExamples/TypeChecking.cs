@@ -10,44 +10,44 @@ namespace Smells.CodeSmellExamples
 
     class TypeCheckingBad : TypeCheckingBase
     {
-        private bool salesman;
-        private bool engineer;
-        private int salary;
+        private Employee obj;
+        private int SALESMAN = 0;
+        private int ENGINEER = 1;
+        private int DIRECTOR = 2;
 
         public override string getType()
         {
-            if (salesman == engineer)
-                throw new Exception("Error, can't be both or neither");
-            if (salesman)
-                return "Salesman";
-            if (engineer)
-                return "Engineer";
-            else
-                return "Error";
+            // user defined getType method
+            if (this.obj.getType() == ENGINEER) return "Engineer";
+            else if (this.obj.getType() == SALESMAN) return "Salesman";
+            else if (this.obj.getType() == DIRECTOR) return "Director";
+            else return "Error";
         }
 
-        public TypeCheckingBad(bool salesman, bool engineer)
+        public TypeCheckingBad(Employee type)
         {
-            this.salesman = salesman;
-            this.engineer = engineer;
-            salary = engineer ? 40000 : salesman ? 100000 : 2000;
+            this.obj = type;
         }
     }
 
     public abstract class Employee
     {
+        public int SALESMAN = 0;
+        public int ENGINEER = 1;
+        public int DIRECTOR = 2;
         private int salary;
 
-        public abstract string getType();
+        public abstract int getType();
     }
 
     public class Engineer : Employee
     {
+        public int _type;
         private int salary = 40000;
 
-        public override string getType()
+        public override int getType()
         {
-            return "engineer";
+            return this.ENGINEER;
         }
     }
 
@@ -55,18 +55,35 @@ namespace Smells.CodeSmellExamples
     {
         private int salary = 100000;
 
-        public override string getType()
+        public override int getType()
         {
-            return "salesman";
+            return this.SALESMAN;
+        }
+    }
+
+    public class Director : Employee
+    {
+        private int salary = 1000000000;
+
+        public override int getType()
+        {
+            return this.DIRECTOR;
         }
     }
 
     public class TypeCheckingGood : TypeCheckingBase
     {
+        private int SALESMAN = 0;
+        private int ENGINEER = 1;
+        private int DIRECTOR = 2;
         private Employee obj;
         public override string getType()
         {
-            return obj.getType();
+            // built-in GetType method
+            if (this.obj.GetType() == typeof(Engineer)) return "Engineer";
+            else if (this.obj.GetType() == typeof(Salesman)) return "Salesman";
+            else if (this.obj.GetType() == typeof(Director)) return "Director";
+            else return "Error";
         }
 
         public TypeCheckingGood(Employee type)
