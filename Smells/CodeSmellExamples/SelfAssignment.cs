@@ -5,7 +5,7 @@
         public abstract string SelfAssignment();
     }
     
-    public class SelfAssignmentGood : SelfAssignmentBase
+    public class SelfAssignmentBad : SelfAssignmentBase
     {
         public override string SelfAssignment()
         {
@@ -23,7 +23,7 @@
         }
     }
 
-    public class SelfAssignmentBad : SelfAssignmentBase
+    public class SelfAssignmentGood : SelfAssignmentBase
     {
         public override string SelfAssignment()
         {
