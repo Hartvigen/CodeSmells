@@ -8,7 +8,7 @@ namespace Smells.CodeSmellExamples
         public abstract string getType();
     }
 
-    class TypeCheckingBad : TypeCheckingBase
+    class TypeCheckingTypeFieldBad : TypeCheckingBase
     {
         private Employee obj;
         private int SALESMAN = 0;
@@ -18,13 +18,13 @@ namespace Smells.CodeSmellExamples
         public override string getType()
         {
             // user defined getType method
-            if (this.obj.getType() == ENGINEER) return "Engineer";
-            else if (this.obj.getType() == SALESMAN) return "Salesman";
-            else if (this.obj.getType() == DIRECTOR) return "Director";
+            if (this.obj.getTypeField() == ENGINEER) return "Engineer";
+            else if (this.obj.getTypeField() == SALESMAN) return "Salesman";
+            else if (this.obj.getTypeField() == DIRECTOR) return "Director";
             else return "Error";
         }
 
-        public TypeCheckingBad(Employee type)
+        public TypeCheckingTypeFieldBad(Employee type)
         {
             this.obj = type;
         }
@@ -37,7 +37,8 @@ namespace Smells.CodeSmellExamples
         public int DIRECTOR = 2;
         private int salary;
 
-        public abstract int getType();
+        public abstract int getTypeField();
+        public abstract string getTypeString();
     }
 
     public class Engineer : Employee
@@ -45,9 +46,14 @@ namespace Smells.CodeSmellExamples
         public int _type;
         private int salary = 40000;
 
-        public override int getType()
+        public override int getTypeField()
         {
             return this.ENGINEER;
+        }
+
+        public override string getTypeString()
+        {
+            return "Engineer";
         }
     }
 
@@ -55,9 +61,14 @@ namespace Smells.CodeSmellExamples
     {
         private int salary = 100000;
 
-        public override int getType()
+        public override int getTypeField()
         {
             return this.SALESMAN;
+        }
+
+        public override string getTypeString()
+        {
+            return "Salesman";
         }
     }
 
@@ -65,17 +76,19 @@ namespace Smells.CodeSmellExamples
     {
         private int salary = 1000000000;
 
-        public override int getType()
+        public override int getTypeField()
         {
             return this.DIRECTOR;
         }
+
+        public override string getTypeString()
+        {
+            return "Director";
+        }
     }
 
-    public class TypeCheckingGood : TypeCheckingBase
+    public class TypeCheckingRTTIBad : TypeCheckingBase
     {
-        private int SALESMAN = 0;
-        private int ENGINEER = 1;
-        private int DIRECTOR = 2;
         private Employee obj;
         public override string getType()
         {
@@ -86,9 +99,23 @@ namespace Smells.CodeSmellExamples
             else return "Error";
         }
 
-        public TypeCheckingGood(Employee type)
+        public TypeCheckingRTTIBad(Employee type)
         {
             obj = type;
+        }
+    }
+
+    public class TypeCheckingGood : TypeCheckingBase
+    {
+        Employee state;
+        public override string getType()
+        {
+            return state.getTypeString();
+        }
+
+        public TypeCheckingGood(Employee state)
+        {
+            this.state = state;
         }
     }
 }

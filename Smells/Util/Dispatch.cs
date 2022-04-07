@@ -37,8 +37,11 @@ namespace Smells.CodeSmellDispatch
                 case "short-circuit":
                     RunShortCircuit(variant);
                     break;
-                case "type-checking":
-                    RunTypeChecking(variant);
+                case "type-checking-type-field":
+                    RunTypeCheckingTypeField(variant);
+                    break;
+                case "type-checking-rtti":
+                    RunTypeCheckingRTTI(variant);
                     break;
                 default:
                     Console.WriteLine("Error: argument \"" + smell + "\" not recognized, please try again.");
@@ -169,13 +172,26 @@ namespace Smells.CodeSmellDispatch
             Console.WriteLine("Done");
         }
 
-        private void RunTypeChecking(string variant)
+        private void RunTypeCheckingTypeField(string variant)
         {
             int iterations = 500000000; // 500M
 
             TypeCheckingBase TypeChecking;
-            if (variant == "bad") TypeChecking = new TypeCheckingBad(false, true);
-            else TypeChecking = new TypeCheckingGood(new Salesman());
+            if (variant == "bad") TypeChecking = new TypeCheckingTypeFieldBad(new Director());
+            else TypeChecking = new TypeCheckingGood(new Director());
+
+            Console.WriteLine("Running code smell Type Checking, variant " + variant);
+            for (int i = 0; i < iterations; i++) TypeChecking.getType();
+            Console.WriteLine("Done");
+        }
+
+        private void RunTypeCheckingRTTI(string variant)
+        {
+            int iterations = 500000000; // 500M
+
+            TypeCheckingBase TypeChecking;
+            if (variant == "bad") TypeChecking = new TypeCheckingRTTIBad(new Director());
+            else TypeChecking = new TypeCheckingGood(new Director());
 
             Console.WriteLine("Running code smell Type Checking, variant " + variant);
             for (int i = 0; i < iterations; i++) TypeChecking.getType();
