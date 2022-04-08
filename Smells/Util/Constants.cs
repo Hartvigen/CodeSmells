@@ -13,7 +13,8 @@ namespace Smells.CodeSmellConstants
             "self-assignment",
             "short-circuit",
             "type-checking-type-field",
-            "type-checking-rtti"
+            "type-checking-rtti",
+            "dead-code"
         };
     }
 }

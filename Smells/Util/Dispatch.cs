@@ -197,6 +197,19 @@ namespace Smells.CodeSmellDispatch
             for (int i = 0; i < iterations; i++) TypeChecking.getType();
             Console.WriteLine("Done");
         }
+
+        private void RunDeadCode(string variant)
+        {
+            int iterations = 500000000; // 500M
+
+            DeadCodeBase DeadCode;
+            if (variant == "bad") DeadCode = new DeadCodeBad();
+            else DeadCode = new DeadCodeGood();
+
+            Console.WriteLine("Running code smell Dead Code, variant " + variant);
+            for (int i = 0; i < iterations; i++) DeadCode.Run();
+            Console.WriteLine("Done");
+        }
         
     }
 }
