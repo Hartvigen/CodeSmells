@@ -2,7 +2,8 @@
 
 # smells to run
 SMELLS=('dead-local-store' 'duplicate-code' 'feature-envy' 'god-class' 'long-method' 'parameter-by-value'
-        'repeated-conditionals' 'self-assignment' 'short-circuit' 'type-checking')
+        'repeated-conditionals' 'self-assignment' 'short-circuit' 'type-checking-type-field' 'type-checking-rtti'
+        'dead-code' 'redundant-data-storage')
 # variants to run for each smell
 VARIANTS=('good' 'bad')
 # number of times to run each variant of each smell

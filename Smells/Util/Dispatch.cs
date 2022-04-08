@@ -43,6 +43,12 @@ namespace Smells.CodeSmellDispatch
                 case "type-checking-rtti":
                     RunTypeCheckingRTTI(variant);
                     break;
+                case "dead-code":
+                    RunDeadCode(variant);
+                    break;
+                case "redundant-data-storage":
+                    RunRedundantDataStorage(variant);
+                    break;
                 default:
                     Console.WriteLine("Error: argument \"" + smell + "\" not recognized, please try again.");
                     Console.WriteLine("Available arguments are:");
@@ -211,5 +217,17 @@ namespace Smells.CodeSmellDispatch
             Console.WriteLine("Done");
         }
         
+        private void RunRedundantDataStorage(string variant)
+        {
+            int iterations = 5000000; // 5M
+
+            RedundantDataStorageBase RedundantData;
+            if (variant == "bad") RedundantData = new RedundantDataStorageBad();
+            else RedundantData = new RedundantDataStorageGood();
+
+            Console.WriteLine("Running code smell Redundant Data Storage, variant " + variant);
+            for (int i = 0; i < iterations; i++) RedundantData.Run();
+            Console.WriteLine("Done");
+        }
     }
 }

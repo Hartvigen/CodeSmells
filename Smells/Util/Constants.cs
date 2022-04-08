@@ -14,7 +14,8 @@ namespace Smells.CodeSmellConstants
             "short-circuit",
             "type-checking-type-field",
             "type-checking-rtti",
-            "dead-code"
+            "dead-code",
+            "redundant-data-storage"
         };
     }
 }
