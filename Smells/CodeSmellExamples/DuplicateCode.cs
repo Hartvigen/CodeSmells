@@ -9,7 +9,7 @@ namespace Smells.CodeSmellExamples
         public abstract void SumElements();
     }
 
-    public class DuplicateCodeGood : DuplicateCodeBase
+    public class DuplicateCodeBad : DuplicateCodeBase
     {
         private List<int> list_a = new List<int>() {1, 3, 5, 7, 9};
         private List<int> list_b = new List<int>() {2, 4, 6, 8, 10};
@@ -36,7 +36,7 @@ namespace Smells.CodeSmellExamples
         }
     }
 
-    public class DuplicateCodeBad : DuplicateCodeBase
+    public class DuplicateCodeGood : DuplicateCodeBase
     {
         private List<int> list_a = new List<int>() {1, 3, 5, 7, 9};
         private List<int> list_b = new List<int>() {2, 4, 6, 8, 10};
