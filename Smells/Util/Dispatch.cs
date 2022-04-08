@@ -49,8 +49,9 @@ namespace Smells.CodeSmellDispatch
                 case "redundant-data-storage":
                     RunRedundantDataStorage(variant);
                     break;
-                case "in-line-method":
-                    
+                case "in-line":
+                    RunInLineMethod(variant);
+                    break;
                 default:
                     Console.WriteLine("Error: argument \"" + smell + "\" not recognized, please try again.");
                     Console.WriteLine("Available arguments are:");
