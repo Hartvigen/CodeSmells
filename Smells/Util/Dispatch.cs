@@ -49,6 +49,8 @@ namespace Smells.CodeSmellDispatch
                 case "redundant-data-storage":
                     RunRedundantDataStorage(variant);
                     break;
+                case "in-line-method":
+                    
                 default:
                     Console.WriteLine("Error: argument \"" + smell + "\" not recognized, please try again.");
                     Console.WriteLine("Available arguments are:");
@@ -228,6 +230,19 @@ namespace Smells.CodeSmellDispatch
             Console.WriteLine("Running code smell Redundant Data Storage, variant " + variant);
             for (int i = 0; i < iterations; i++) RedundantData.Run();
             Console.WriteLine("Done");
+        }
+
+        private void RunInLineMethod(string variant)
+        {
+            int iterations = 100000000; // 100M
+
+            InLineBase inLine;
+            if (variant == "bad") inLine = new InLineBad();
+            else inLine = new InLineGood();
+            
+            Console.WriteLine("Running code smell In Line Method, variant " + variant);
+            for (int i = 0; i < iterations; i++) inLine.InLine();
+            Console.Write("Done");
         }
     }
 }

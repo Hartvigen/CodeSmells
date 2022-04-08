@@ -1,8 +1,6 @@
 namespace Smells.CodeSmellExamples
 {
-    public class InLineMethod
-    {
-        public abstract class InLineBase
+    public abstract class InLineBase
         {
             public abstract void InLine();
         }
@@ -50,10 +48,5 @@ namespace Smells.CodeSmellExamples
                 sophieAge = sophieAge / 7;
                 sophieAge = sophieAge + 1;
             }
-
-            
-            
-
         }
-    }
 }
