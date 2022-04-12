@@ -209,7 +209,7 @@ namespace Smells.CodeSmellDispatch
 
         private void RunDeadCode(string variant)
         {
-            int iterations = 500000000; // 500M
+            int iterations = 200000000; // 200M
 
             DeadCodeBase DeadCode;
             if (variant == "bad") DeadCode = new DeadCodeBad();
@@ -222,7 +222,7 @@ namespace Smells.CodeSmellDispatch
         
         private void RunRedundantDataStorage(string variant)
         {
-            int iterations = 5000000; // 5M
+            int iterations = 2000000; // 2M
 
             RedundantDataStorageBase RedundantData;
             if (variant == "bad") RedundantData = new RedundantDataStorageBad();
@@ -235,7 +235,7 @@ namespace Smells.CodeSmellDispatch
 
         private void RunInLineMethod(string variant)
         {
-            int iterations = 100000000; // 100M
+            int iterations = 200000000; // 200M
 
             InLineBase inLine;
             if (variant == "bad") inLine = new InLineBad();
