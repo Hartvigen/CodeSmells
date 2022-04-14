@@ -1,5 +1,6 @@
 bin/
 obj/
+venv/
 /packages/
 .vs/
 .idea/.idea.CodeSmells/

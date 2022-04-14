@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using allSmells;
 using Smells.CodeSmellExamples;
 using Smells.CodeSmellDispatch;
 using Smells.CodeSmellConstants;
@@ -12,7 +14,10 @@ namespace Smells
             Args args = new Args(args1);
             Dispatcher Dispatch = new Dispatcher();
 
-            Dispatch.DispatchCodeSmell(args.getSmell(), args.getVariant());
+            if (args.getSmell() == "super-smell")
+                SuperSmell.run();
+            else
+                Dispatch.DispatchCodeSmell(args.getSmell(), args.getVariant());
         }
     }
 
@@ -31,30 +36,37 @@ namespace Smells
                 Console.WriteLine("Error: no arguments detected, exiting");
                 HelpText();
                 System.Environment.Exit(1);
-            } 
-            else if (args.Length == 1)
-            {
-                if (args[0] == "help") 
+            }
+            else if (args[0] == "help") 
                 {
                     HelpText();
                     System.Environment.Exit(0);
                 }
+            else if (args[0] == "super-smell")
+            {
+                Smell = "super-smell";
+                Variant = "good";
+            }
+            
+            else 
+            {
+                if (args.Length == 2)
+                {
+                    Smell = args[0];
+                    Variant = args[1];
+
+                    if (Variant != "bad" && Variant != "good")
+                    {
+                        Console.WriteLine("Variant \"" + Variant + "\" unrecognized, defaulting to good");
+                        Variant = "good";
+                    }
+                }
+                
                 else 
                 {
                     Console.WriteLine("Error: insufficient amount of arguments detected, exiting");
                     HelpText();
                     System.Environment.Exit(1);
-                }
-            } 
-            else if (args.Length == 2)
-            {
-                Smell = args[0];
-                Variant = args[1];
-
-                if (Variant != "bad" && Variant != "good")
-                {
-                    Console.WriteLine("Variant \"" + Variant + "\" unrecognized, defaulting to good");
-                    Variant = "good";
                 }
             }
         }
