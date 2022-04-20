@@ -21,22 +21,65 @@ namespace allSmells
         
         static public List<StreamerBase> createData(bool typeChecking)
         {
-            List<StreamerBase> streamers;
+            List<Streamer> streamersIni;
+            List<StreamerBase> streamers = new List<StreamerBase>();
 
             using (var reader = new StreamReader("publish/twitch.csv"))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                streamers = csv.GetRecords<StreamerBase>().ToList();
+                streamersIni = csv.GetRecords<Streamer>().ToList();
             }
-            
 
+            foreach (var streamer  in streamersIni)
+            {
+                if (streamer.Partnered)
+                    streamers.Add(new PartneredStreamer(streamer));
+                else 
+                    streamers.Add(new UnpartneredStreamer(streamer));
+            }
+
+            if (typeChecking)
+            {
+                foreach (var streamer in streamers)
+                {
+                    Console.WriteLine(streamer.Channel);
+                    TypeCheckingGood typeChecker = new TypeCheckingGood(streamer);
+                    typeChecker.getType();
+                }
+            }
+
+            else
+            {
+                foreach (var streamer in streamers)
+                {
+                    TypeCheckingBad typeChecker = new TypeCheckingBad(streamer);
+                    typeChecker.getType();
+                }
+            }
             return streamers;
+        }
+    }
+
+    public class Streamer : StreamerBase
+    {
+        public override int GetTypeField()
+        {
+            if (Partnered) return 1;
+            else return 0;
+        }
+
+        public override string GetTypeString()
+        {
+            if (Partnered) return "Partnered";
+            else return "Unpartnered";
         }
     }
     
     public abstract class StreamerBase
     {
-        public abstract int GetType();
+        public int UNPARTNERED = 0;
+        public int PARTNERED = 1;
+        public abstract int GetTypeField();
         public abstract string GetTypeString();
         
         [Name("Channel")]
@@ -61,34 +104,68 @@ namespace allSmells
         public string Language { get; set; }
 
     }
-    
-    public class Streamer : StreamerBase
+
+
+    public abstract class TypeCheckingBase
     {
-        public override int GetType()
+        public abstract string getType();
+    }
+
+    public class TypeCheckingGood : TypeCheckingBase
+    {
+        private StreamerBase state;
+        public override string getType()
         {
-            throw new NotImplementedException();
+            return state.GetTypeString();
         }
 
-        public override string GetTypeString()
+        public TypeCheckingGood(StreamerBase state)
         {
-            throw new NotImplementedException();
+            this.state = state;
+        }
+    }
+
+    public class TypeCheckingBad : TypeCheckingBase
+    {
+        private StreamerBase obj;
+        private bool UNPARTNERED = false;
+        private bool PARTNERED = true;
+        public override string getType()
+        {
+            if (this.obj.GetType() == typeof(PartneredStreamer)) return "Partnered";
+            else if (this.obj.GetType() == typeof(UnpartneredStreamer)) return "Unpartnered";
+            else return "Error";
+        }
+
+        public TypeCheckingBad(StreamerBase type)
+        {
+            this.obj = type;
         }
     }
     public class PartneredStreamer : StreamerBase
     {
         public PartneredStreamer(StreamerBase streamer)
         {
-            
-        }
+            Channel = streamer.Channel;
+            WatchTime = streamer.WatchTime;
+            PeakViewers = streamer.PeakViewers;
+            AvgViewers = streamer.AvgViewers;
+            Followers = streamer.Followers;
+            FollowersGained = streamer.FollowersGained;
+            ViewsGained = streamer.FollowersGained;
+            Mature = streamer.Mature;
+            Language = streamer.Language;
 
-        public override int GetType()
+        }
+        
+        public override int GetTypeField()
         {
-            throw new NotImplementedException();
+            return this.PARTNERED;
         }
 
         public override string GetTypeString()
         {
-            throw new NotImplementedException();
+            return "Partnered";
         }
     }
 
@@ -96,17 +173,26 @@ namespace allSmells
     {
         public UnpartneredStreamer(StreamerBase streamer)
         {
-            
+            Channel = streamer.Channel;
+            WatchTime = streamer.WatchTime;
+            PeakViewers = streamer.PeakViewers;
+            AvgViewers = streamer.AvgViewers;
+            Followers = streamer.Followers;
+            FollowersGained = streamer.FollowersGained;
+            ViewsGained = streamer.FollowersGained;
+            Mature = streamer.Mature;
+            Language = streamer.Language;
         }
-        
-        public override int GetType()
+
+
+        public override int GetTypeField()
         {
-            throw new NotImplementedException();
+            return this.UNPARTNERED;
         }
 
         public override string GetTypeString()
         {
-            throw new NotImplementedException();
+            return "Unpartnered";
         }
     }
 }
