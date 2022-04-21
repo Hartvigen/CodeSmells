@@ -15,6 +15,9 @@ namespace Smells.CodeSmellExamples
             int b = 10;
 
             double c = Math.Sqrt(Math.Pow(2, a) + Math.Pow(2, b));
+
+            // make sure eval is done in good version as well for fairness
+            if (a > b) c = c * 2;
         }
     }
 
@@ -26,6 +29,17 @@ namespace Smells.CodeSmellExamples
             int b = 10;
 
             double c = Math.Sqrt(Math.Pow(2, a) + Math.Pow(2, b));
+
+            // try force loading these methods into memory without executing
+            if (a > b)
+            {
+                int fib = Fibonacci(10);
+                int fac = Factorial(5);
+                bool prime = isPrime(400);
+                double sqArea = SquareArea(40);
+                double cArea = CircleArea(10);
+                double cylVol = VolumeCylinder(10, 40);
+            }
         }
 
         public int Fibonacci(int n)
