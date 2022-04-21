@@ -3,13 +3,15 @@ namespace Smells.CodeSmellExamples
     public abstract class ParameterByValueBase
     {
         public abstract void ParameterByValue();
-        public void Compute(int a, int b)
+        public int Compute(int a, int b)
         {
             int c = a * b;
 
             if (a > b) c = c + b;
 
             b = b * 2;
+
+            return c;
         }
     }
 
@@ -20,16 +22,18 @@ namespace Smells.CodeSmellExamples
             int a = 100;
             int b = 50;
 
-            Compute(ref a, ref b);
+            int c = Compute(ref a, ref b);
         }
 
-        public void Compute(ref int a, ref int b)
+        public int Compute(ref int a, ref int b)
         {
             int c = a * b;
 
             if (a > b) c = c + b;
 
             b = b * 2;
+
+            return c;
         }
     }
 
@@ -37,7 +41,10 @@ namespace Smells.CodeSmellExamples
     {
         public override void ParameterByValue()
         {
-            Compute(100, 50);
+            int a = 100;
+            int b = 50;
+            
+            int c = Compute(a, b);
         }
     }
 }
