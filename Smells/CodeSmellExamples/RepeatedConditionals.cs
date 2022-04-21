@@ -19,7 +19,7 @@ namespace Smells.CodeSmellExamples
                 b = b * c;
             }
 
-            a = a * c + b;
+            int d = a * c + b;
         }
     }
 
@@ -35,7 +35,7 @@ namespace Smells.CodeSmellExamples
                 b = b + a;
             }
 
-            a = a * c + b;
+            int d = a * c + b;
 
             if (a * c > b) {
                 b = b * c;
