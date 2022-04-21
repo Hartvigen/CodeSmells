@@ -11,15 +11,15 @@ namespace Smells
     {
         static void Main(string[] args1)
         {
-            SuperSmell.run(true);
+            //SuperSmell.run(true);
             
             Args args = new Args(args1);
             Dispatcher Dispatch = new Dispatcher();
 
             if (args.getSmell() == "super-smell")
                 SuperSmell.run(true);
-            //else
-               // Dispatch.DispatchCodeSmell(args.getSmell(), args.getVariant());
+            else
+                Dispatch.DispatchCodeSmell(args.getSmell(), args.getVariant());
         }
     }
 
