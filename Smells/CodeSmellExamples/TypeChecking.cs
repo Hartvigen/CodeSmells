@@ -5,12 +5,14 @@ namespace Smells.CodeSmellExamples
 {
     public abstract class TypeCheckingBase
     {
+        private Employee obj;
         public abstract string getType();
+        public abstract void SetObj(Employee newObj);
     }
 
     class TypeCheckingTypeFieldBad : TypeCheckingBase
     {
-        private Employee obj;
+        private Employee obj { get; set; }
         private int SALESMAN = 0;
         private int ENGINEER = 1;
         private int DIRECTOR = 2;
@@ -23,10 +25,10 @@ namespace Smells.CodeSmellExamples
             else if (this.obj.getTypeField() == DIRECTOR) return "Director";
             else return "Error";
         }
-
-        public TypeCheckingTypeFieldBad(Employee type)
+        
+        public override void SetObj(Employee newObj)
         {
-            this.obj = type;
+            obj = newObj;
         }
     }
 
@@ -89,7 +91,7 @@ namespace Smells.CodeSmellExamples
 
     public class TypeCheckingRTTIBad : TypeCheckingBase
     {
-        private Employee obj;
+        private Employee obj { get; set; }
         public override string getType()
         {
             // built-in GetType method
@@ -98,24 +100,25 @@ namespace Smells.CodeSmellExamples
             else if (this.obj.GetType() == typeof(Director)) return "Director";
             else return "Error";
         }
-
-        public TypeCheckingRTTIBad(Employee type)
+        
+        public override void SetObj(Employee newObj)
         {
-            obj = type;
+            obj = newObj;
         }
     }
 
     public class TypeCheckingGood : TypeCheckingBase
     {
-        Employee state;
+        private Employee obj { get; set; }
+
         public override string getType()
         {
-            return state.getTypeString();
+            return obj.getTypeString();
         }
 
-        public TypeCheckingGood(Employee state)
+        public override void SetObj(Employee newObj)
         {
-            this.state = state;
+            obj = newObj;
         }
     }
 }

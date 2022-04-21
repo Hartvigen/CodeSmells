@@ -184,26 +184,46 @@ namespace Smells.CodeSmellDispatch
         private void RunTypeCheckingTypeField(string variant)
         {
             int iterations = 500000000; // 500M
+            Employee[] employeeTypes =
+            {
+                new Engineer(),
+                new Salesman(),
+                new Director()
+            };
 
             TypeCheckingBase TypeChecking;
-            if (variant == "bad") TypeChecking = new TypeCheckingTypeFieldBad(new Director());
-            else TypeChecking = new TypeCheckingGood(new Director());
+            if (variant == "bad") TypeChecking = new TypeCheckingTypeFieldBad();
+            else TypeChecking = new TypeCheckingGood();
 
             Console.WriteLine("Running code smell Type Checking, variant " + variant);
-            for (int i = 0; i < iterations; i++) TypeChecking.getType();
+            for (int i = 0; i < iterations; i++)
+            {
+                TypeChecking.SetObj(employeeTypes[i % 3]);
+                TypeChecking.getType();
+            }
             Console.WriteLine("Done");
         }
 
         private void RunTypeCheckingRTTI(string variant)
         {
             int iterations = 500000000; // 500M
-
+            Employee[] employeeTypes =
+            {
+                new Engineer(),
+                new Salesman(),
+                new Director()
+            };
+            
             TypeCheckingBase TypeChecking;
-            if (variant == "bad") TypeChecking = new TypeCheckingRTTIBad(new Director());
-            else TypeChecking = new TypeCheckingGood(new Director());
+            if (variant == "bad") TypeChecking = new TypeCheckingRTTIBad();
+            else TypeChecking = new TypeCheckingGood();
 
             Console.WriteLine("Running code smell Type Checking, variant " + variant);
-            for (int i = 0; i < iterations; i++) TypeChecking.getType();
+            for (int i = 0; i < iterations; i++) 
+            {
+                TypeChecking.SetObj(employeeTypes[i % 3]);
+                TypeChecking.getType();
+            }
             Console.WriteLine("Done");
         }
 
