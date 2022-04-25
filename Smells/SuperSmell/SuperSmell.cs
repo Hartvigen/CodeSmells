@@ -93,14 +93,41 @@ namespace allSmells
                     streamer.radiusOfFollowers = pi * Math.Pow(2, streamer.Followers);
                 }
 
+                //Duplicate Code
+                List<int> list_a = new List<int>() {1, 3, 5, 7, 9};
+                List<int> list_b = new List<int>() {2, 4, 6, 8, 10};
+                
                 if (duplicateCode)
                 {
+                    int sum_a = 0;
+                    int sum_b = 0;
 
+                    for (int x = 0; x < 4; x++)
+                    {
+                        sum_a += list_a[x];
+                    }
+
+                    int average_a = sum_a / 4;
+            
+                    for (int x = 0; x < 4; x++)
+                    {
+                        sum_b += list_b[x];
+                    }
                 }
 
                 else
                 {
+                    int sum_a = 0;
+                    int sum_b = 0;
+            
+                    for (int x = 0; x < 4; x++)
+                    {
+                        sum_a += list_a[x];
+                        sum_b += list_b[x];
+                    }
 
+                    int average_a = sum_a / 4;
+                    int average_b = sum_b / 4;
                 }
             }
         }
