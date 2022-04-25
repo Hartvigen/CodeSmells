@@ -35,11 +35,11 @@ namespace Smells.CodeSmellExamples
                 b = b + a;
             }
 
-            int d = a * c + b;
-
             if (a * c > b) {
                 b = b * c;
             }
+            
+            int d = a * c + b;
         }
     }
 }
