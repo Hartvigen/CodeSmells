@@ -14,16 +14,14 @@ namespace allSmells
     {
 
         //Smells will be run if corresponding boolean parameter is true, otherwise a non-smelly version is run
-        static public void run(bool typeChecking, bool inline, bool repeatCond, bool deadLocalStore, bool duplicateCode)
+        static public void run(bool typeChecking, bool inline, bool repeatCond, bool deadLocalStore, bool duplicateCode, bool shortCircuit)
         {
             List<StreamerBase> streamers = createData();
 
-            //Smells will be called one-by-one depending on parameter settings
-            //
-            //Type checking smell
-
+            //Smells will be called sequentially depending on parameter settings
             foreach (var streamer in streamers)
             {
+                //Type checking smell
                 if(typeChecking)
                 {
                     TypeCheckingGood typeChecker = new TypeCheckingGood(streamer);
@@ -129,6 +127,27 @@ namespace allSmells
                     int average_a = sum_a / 4;
                     int average_b = sum_b / 4;
                 }
+                
+                
+                //Short circuit
+                if (shortCircuit)
+                {
+                    if(streamer.PeakViewers > streamer.AvgViewers | streamer.Followers > streamer.FollowersGained) 
+                        streamer.AvgViewers +=1;
+
+                    if (streamer.AvgViewers > streamer.PeakViewers & streamer.Followers > 0)
+                        streamer.Followers += 1;
+
+                }
+
+                else
+                {
+                    if(streamer.PeakViewers > streamer.AvgViewers || streamer.Followers > streamer.FollowersGained) 
+                        streamer.AvgViewers +=1;
+
+                    if (streamer.AvgViewers > streamer.PeakViewers && streamer.Followers > 0)
+                        streamer.Followers += 1;
+                }
             }
         }
         
@@ -196,9 +215,9 @@ namespace allSmells
         [Name("Watch time(Minutes)")]
         public UInt64 WatchTime { get; set; }
         [Name("Peak viewers")]
-        public string PeakViewers { get; set; }
+        public uint PeakViewers { get; set; }
         [Name("Average viewers")]
-        public string AvgViewers { get; set; }
+        public uint AvgViewers { get; set; }
         [Name("Followers")]
         public UInt32 Followers { get; set; }
         [Name("Followers gained")]
