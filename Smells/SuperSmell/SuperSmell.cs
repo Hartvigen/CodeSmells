@@ -14,7 +14,7 @@ namespace allSmells
     {
 
         //Smells will be run if corresponding boolean parameter is true, otherwise a non-smelly version is run
-        static public void run(bool typeChecking, bool inline, bool repeatCond)
+        static public void run(bool typeChecking, bool inline, bool repeatCond, bool deadLocalStore)
         {
             List<StreamerBase> streamers = createData();
             
@@ -44,12 +44,7 @@ namespace allSmells
             {
                 foreach (var streamer in streamers)
                 {
-                    streamer.Followers += 2;
-                    streamer.Followers = streamer.Followers * 2;
-                    streamer.Followers -= 4;
-                    streamer.Followers = streamer.Followers / 2;
-                    streamer.Followers += 1;
-
+                    streamer.Followers = inLineCalc(streamer.Followers);
                 }
             }
 
@@ -57,7 +52,11 @@ namespace allSmells
             {
                 foreach (var streamer in streamers)
                 {
-                    streamer.Followers = inLineCalc(streamer.Followers);
+                    streamer.Followers += 2;
+                    streamer.Followers = streamer.Followers * 2;
+                    streamer.Followers -= 4;
+                    streamer.Followers = streamer.Followers / 2;
+                    streamer.Followers += 1;
 
                 }
             }
@@ -88,6 +87,31 @@ namespace allSmells
                         streamer.Mature = true;
                         streamer.Followers -= 500;
                     }
+                }
+            }
+            
+            //Dead Local Store
+            if (deadLocalStore)
+            {
+                foreach (var streamer in streamers)
+                {
+                    double pi = 3.14;
+                    double notPi = 4.13;
+                    int cousinsAgeInMonths = 146;
+                    string niceGreeting = "Hellow World";
+
+                    streamer.radiusOfFollowers = pi * Math.Pow(2, streamer.Followers);
+                }
+
+            }
+
+            else
+            {
+                foreach (var streamer in streamers)
+                {
+                    double pi = 3.14;
+
+                    streamer.radiusOfFollowers = pi * Math.Pow(2, streamer.Followers);
                 }
             }
 
@@ -150,7 +174,7 @@ namespace allSmells
         public int PARTNERED = 1;
         public abstract int GetTypeField();
         public abstract string GetTypeString();
-        
+
         [Name("Channel")]
         public string Channel { get; set; }
         [Name("Watch time(Minutes)")]
@@ -171,6 +195,8 @@ namespace allSmells
         public bool Mature { get; set; }
         [Name("Language")]
         public string Language { get; set; }
+        
+        public double radiusOfFollowers { get; set; }
 
     }
 
