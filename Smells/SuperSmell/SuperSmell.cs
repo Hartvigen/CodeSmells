@@ -13,13 +13,69 @@ namespace allSmells
     public class SuperSmell
     {
 
-        static public void run(bool typeChecking)
+        //Smells will be run if corresponding boolean parameter is true, otherwise a non-smelly version is run
+        static public void run(bool typeChecking, bool inline)
         {
-            List<StreamerBase> streamers = createData(typeChecking);
+            List<StreamerBase> streamers = createData();
+            
+            //Smells will be called one-by-one depending on parameter settings
+            //
+            //Type checking smell
+            if (typeChecking)
+            {
+                foreach (var streamer in streamers)
+                {
+                    TypeCheckingGood typeChecker = new TypeCheckingGood(streamer);
+                    typeChecker.getType();
+                }
+            }
+
+            else
+            {
+                foreach (var streamer in streamers)
+                {
+                    TypeCheckingBad typeChecker = new TypeCheckingBad(streamer);
+                    typeChecker.getType();
+                }
+            }
+            
+            //In-line smell
+            if (inline)
+            {
+                foreach (var streamer in streamers)
+                {
+                    streamer.Followers += 2;
+                    streamer.Followers = streamer.Followers * 2;
+                    streamer.Followers -= 4;
+                    streamer.Followers = streamer.Followers / 2;
+                    streamer.Followers += 1;
+
+                }
+            }
+
+            else
+            {
+                foreach (var streamer in streamers)
+                {
+                    streamer.Followers = inLineCalc(streamer.Followers);
+
+                }
+            }
 
         }
+
+        static private uint inLineCalc(uint followers)
+        {
+            followers += 2;
+            followers = followers * 2;
+            followers -= 4;
+            followers = followers / 2;
+            followers += 1;
+
+            return followers;
+        }
         
-        static public List<StreamerBase> createData(bool typeChecking)
+        static private List<StreamerBase> createData()
         {
             List<Streamer> streamersIni;
             List<StreamerBase> streamers = new List<StreamerBase>();
@@ -38,24 +94,8 @@ namespace allSmells
                     streamers.Add(new UnpartneredStreamer(streamer));
             }
 
-            if (typeChecking)
-            {
-                foreach (var streamer in streamers)
-                {
-                    Console.WriteLine(streamer.Channel);
-                    TypeCheckingGood typeChecker = new TypeCheckingGood(streamer);
-                    typeChecker.getType();
-                }
-            }
-
-            else
-            {
-                foreach (var streamer in streamers)
-                {
-                    TypeCheckingBad typeChecker = new TypeCheckingBad(streamer);
-                    typeChecker.getType();
-                }
-            }
+            
+            
             return streamers;
         }
     }
