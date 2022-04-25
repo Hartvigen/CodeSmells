@@ -14,73 +14,58 @@ namespace allSmells
     {
 
         //Smells will be run if corresponding boolean parameter is true, otherwise a non-smelly version is run
-        static public void run(bool typeChecking, bool inline, bool repeatCond, bool deadLocalStore)
+        static public void run(bool typeChecking, bool inline, bool repeatCond, bool deadLocalStore, bool duplicateCode)
         {
             List<StreamerBase> streamers = createData();
-            
+
             //Smells will be called one-by-one depending on parameter settings
             //
             //Type checking smell
-            if (typeChecking)
+
+            foreach (var streamer in streamers)
             {
-                foreach (var streamer in streamers)
+                if(typeChecking)
                 {
                     TypeCheckingGood typeChecker = new TypeCheckingGood(streamer);
                     typeChecker.getType();
                 }
-            }
 
-            else
-            {
-                foreach (var streamer in streamers)
+                else
                 {
                     TypeCheckingBad typeChecker = new TypeCheckingBad(streamer);
                     typeChecker.getType();
                 }
-            }
-            
-            //In-line smell
-            if (inline)
-            {
-                foreach (var streamer in streamers)
+
+                //In-line smell
+                if (inline)
                 {
                     streamer.Followers = inLineCalc(streamer.Followers);
                 }
-            }
 
-            else
-            {
-                foreach (var streamer in streamers)
+                else
                 {
                     streamer.Followers += 2;
                     streamer.Followers = streamer.Followers * 2;
                     streamer.Followers -= 4;
                     streamer.Followers = streamer.Followers / 2;
                     streamer.Followers += 1;
-
                 }
-            }
-            
-            //Repeated Conditionals
-            if (repeatCond)
-            {
-                foreach (var streamer in streamers)
+
+                //Repeated Conditionals
+                if (repeatCond)
                 {
                     if (streamer.Language == "Spanish")
                     {
                         streamer.Mature = true;
                     }
-                    
+
                     if (streamer.Language == "Spanish")
                     {
                         streamer.Followers -= 500;
                     }
                 }
-            }
 
-            else
-            {
-                foreach (var streamer in streamers)
+                else
                 {
                     if (streamer.Language == "Spanish")
                     {
@@ -88,12 +73,9 @@ namespace allSmells
                         streamer.Followers -= 500;
                     }
                 }
-            }
-            
-            //Dead Local Store
-            if (deadLocalStore)
-            {
-                foreach (var streamer in streamers)
+
+                //Dead Local Store
+                if (deadLocalStore)
                 {
                     double pi = 3.14;
                     double notPi = 4.13;
@@ -101,21 +83,28 @@ namespace allSmells
                     string niceGreeting = "Hellow World";
 
                     streamer.radiusOfFollowers = pi * Math.Pow(2, streamer.Followers);
+
                 }
 
-            }
-
-            else
-            {
-                foreach (var streamer in streamers)
+                else
                 {
                     double pi = 3.14;
 
                     streamer.radiusOfFollowers = pi * Math.Pow(2, streamer.Followers);
                 }
-            }
 
+                if (duplicateCode)
+                {
+
+                }
+
+                else
+                {
+
+                }
+            }
         }
+        
 
         static private uint inLineCalc(uint followers)
         {
