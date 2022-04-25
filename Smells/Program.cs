@@ -18,7 +18,7 @@ namespace Smells
 
             //Smells run if the corresponding boolean parameter is true, otherwise a non-smelly version runs
             if (args.getSmell() == "super-smell")
-                SuperSmell.run(true, true);
+                SuperSmell.run(true, true, true);
             else
                 Dispatch.DispatchCodeSmell(args.getSmell(), args.getVariant());
         }

@@ -14,7 +14,7 @@ namespace allSmells
     {
 
         //Smells will be run if corresponding boolean parameter is true, otherwise a non-smelly version is run
-        static public void run(bool typeChecking, bool inline)
+        static public void run(bool typeChecking, bool inline, bool repeatCond)
         {
             List<StreamerBase> streamers = createData();
             
@@ -59,6 +59,35 @@ namespace allSmells
                 {
                     streamer.Followers = inLineCalc(streamer.Followers);
 
+                }
+            }
+            
+            //Repeated Conditionals
+            if (repeatCond)
+            {
+                foreach (var streamer in streamers)
+                {
+                    if (streamer.Language == "Spanish")
+                    {
+                        streamer.Mature = true;
+                    }
+                    
+                    if (streamer.Language == "Spanish")
+                    {
+                        streamer.Followers -= 500;
+                    }
+                }
+            }
+
+            else
+            {
+                foreach (var streamer in streamers)
+                {
+                    if (streamer.Language == "Spanish")
+                    {
+                        streamer.Mature = true;
+                        streamer.Followers -= 500;
+                    }
                 }
             }
 
