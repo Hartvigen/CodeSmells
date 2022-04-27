@@ -14,7 +14,7 @@ namespace allSmells
     {
 
         //Smells will be run if corresponding boolean parameter is true, otherwise a non-smelly version is run
-        static public void run(bool typeChecking, bool inline, bool repeatCond, bool deadLocalStore, bool duplicateCode, bool shortCircuit)
+        static public void run(bool typeChecking, bool inline, bool repeatCond, bool deadLocalStore, bool duplicateCode, bool shortCircuit, bool featureEnvy, bool paramByValue, bool selfAssignment, bool redundantStorage)
         {
             List<StreamerBase> streamers = createData();
 
@@ -148,10 +148,50 @@ namespace allSmells
                     if (streamer.AvgViewers > streamer.PeakViewers && streamer.Followers > 0)
                         streamer.Followers += 1;
                 }
+
+                followerInfoHolder holder = new followerInfoHolder(streamer);
+                int totalFollowers;
+                int val;
+                
+                //Feature Envy
+                if (featureEnvy)
+                {
+                    totalFollowers = (int)holder.Followers + holder.FollowersGained;
+                }
+                
+                else
+                {
+                    totalFollowers = (int) streamer.Followers + holder.FollowersGained;
+                }
+                
+                
+                //Parameter By Value
+                if (paramByValue)
+                {
+                    val = paramByValueBad(totalFollowers);
+                }
+
+                else
+                {
+                    val = paramByValueGood(ref totalFollowers);
+                }
             }
         }
-        
 
+
+        static private int paramByValueBad(int followers)
+        {
+            int a = followers * 3;
+            int b = a + followers;
+            return b / 2;
+        }
+
+        static private int paramByValueGood(ref int followers)
+        {
+            int a = followers * 3;
+            int b = a + followers;
+            return b / 2;
+        }
         static private uint inLineCalc(uint followers)
         {
             followers += 2;
@@ -161,6 +201,17 @@ namespace allSmells
             followers += 1;
 
             return followers;
+        }
+
+        private class followerInfoHolder()
+        {
+            public UInt32 Followers { get; set; }
+            public int FollowersGained { get; set; }
+            public followerInfoHolder(StreamerBase _streamer)
+            {
+                Followers = _streamer.Followers;
+                FollowersGained = _streamer.FollowersGained;
+            }
         }
         
         static private List<StreamerBase> createData()
@@ -224,7 +275,7 @@ namespace allSmells
         public int FollowersGained { get; set; }
         [Name("Views gained")]
         public int ViewsGained { get; set; }
-        [Name("Partnered")]
+        [Name("Partnenred")]
         public bool Partnered { get; set; }
         [Name("Mature")]
         public bool Mature { get; set; }
