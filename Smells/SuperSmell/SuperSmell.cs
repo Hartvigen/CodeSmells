@@ -34,6 +34,7 @@ namespace allSmells
                     typeChecker.getType();
                 }
 
+                
                 //In-line smell
                 if (inline)
                 {
@@ -49,6 +50,7 @@ namespace allSmells
                     streamer.Followers += 1;
                 }
 
+                
                 //Repeated Conditionals
                 if (repeatCond)
                 {
@@ -72,6 +74,7 @@ namespace allSmells
                     }
                 }
 
+                
                 //Dead Local Store
                 if (deadLocalStore)
                 {
@@ -91,6 +94,7 @@ namespace allSmells
                     streamer.radiusOfFollowers = pi * Math.Pow(2, streamer.Followers);
                 }
 
+                
                 //Duplicate Code
                 List<int> list_a = new List<int>() {1, 3, 5, 7, 9};
                 List<int> list_b = new List<int>() {2, 4, 6, 8, 10};
@@ -149,11 +153,11 @@ namespace allSmells
                         streamer.Followers += 1;
                 }
 
+
+                //Feature Envy
                 followerInfoHolder holder = new followerInfoHolder(streamer);
                 int totalFollowers;
-                int val;
                 
-                //Feature Envy
                 if (featureEnvy)
                 {
                     totalFollowers = (int)holder.Followers + holder.FollowersGained;
@@ -166,6 +170,8 @@ namespace allSmells
                 
                 
                 //Parameter By Value
+                int val;
+                
                 if (paramByValue)
                 {
                     val = paramByValueBad(totalFollowers);
@@ -174,6 +180,36 @@ namespace allSmells
                 else
                 {
                     val = paramByValueGood(ref totalFollowers);
+                }
+                
+                
+                //Self Assignment
+                int doubleFollowers;
+                
+                if (selfAssignment)
+                {
+                    doubleFollowers = totalFollowers * 2;
+                    totalFollowers = totalFollowers;
+                    val = val;
+                    streamer.Followers = streamer.Followers;
+                    streamer.Channel = streamer.Channel;
+                }
+
+                else
+                {
+                    doubleFollowers = totalFollowers * 2;
+                }
+                
+                
+                //Redundant Storage
+                if (redundantStorage)
+                {
+                    
+                }
+                
+                else
+                {
+                    
                 }
             }
         }
