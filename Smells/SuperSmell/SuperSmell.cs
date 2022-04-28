@@ -14,7 +14,7 @@ namespace allSmells
     {
 
         //Smells will be run if corresponding boolean parameter is true, otherwise a non-smelly version is run
-        static public void run(bool typeChecking, bool inline, bool repeatCond, bool deadLocalStore, bool duplicateCode, bool shortCircuit, bool featureEnvy, bool paramByValue, bool selfAssignment, bool redundantStorage)
+        static public void run(bool typeChecking, bool inline, bool repeatCond, bool deadLocalStore, bool duplicateCode, bool shortCircuit, bool featureEnvy, bool paramByValue, bool selfAssignment, bool redundantStorage, bool deadCode)
         {
             List<StreamerBase> streamers = createData();
 
@@ -204,12 +204,37 @@ namespace allSmells
                 //Redundant Storage
                 if (redundantStorage)
                 {
-                    
+                    Console.WriteLine("Redundant smell!");
                 }
                 
                 else
                 {
                     
+                }
+                
+                
+                //Dead Code
+                int a = 5;
+                int b = 10;
+                
+                double c = Math.Sqrt(Math.Pow(2, a) + Math.Pow(2, b));
+                
+                if (deadCode)
+                {
+                    if (a > b)
+                    {
+                        int fib = DeadCodeLib.Fibonacci(10);
+                        int fac = DeadCodeLib.Factorial(5);
+                        bool prime = DeadCodeLib.isPrime(400);
+                        double sqArea = DeadCodeLib.SquareArea(40);
+                        double cArea = DeadCodeLib.CircleArea(10);
+                        double cylVol = DeadCodeLib.VolumeCylinder(10, 40);
+                    }
+                }
+
+                else
+                {
+                    if (a > b) c = c * 2;
                 }
             }
         }
@@ -239,7 +264,7 @@ namespace allSmells
             return followers;
         }
 
-        private class followerInfoHolder()
+        private class followerInfoHolder
         {
             public UInt32 Followers { get; set; }
             public int FollowersGained { get; set; }
@@ -412,4 +437,46 @@ namespace allSmells
             return "Unpartnered";
         }
     }
+
+    public class DeadCodeLib
+    {
+        public static int Fibonacci(int n)
+        {
+            if (n == 0 || n == 1) return n;
+            return Fibonacci(n - 1) + Fibonacci(n - 2);
+        }
+
+        public static int Factorial(int n)
+        {
+            if (n == 1) return n;
+            return Factorial(n - 1) * n;
+        }
+
+        public static bool isPrime(int n)
+        {
+            if (n <= 1) return false;
+
+            for (int i = 2; i <= n; i++) 
+                if (n % i == 0) return false;
+            
+            return true;
+        }
+
+        public static double SquareArea(int side)
+        {
+            return Math.Pow(2, side);
+        }
+
+        public static double CircleArea(int r)
+        {
+            return Math.PI * Math.Pow(2, r);
+        }
+
+        public static double VolumeCylinder(int r, int h)
+        {
+            return Math.PI * Math.Pow(2, r) * h;
+        }
+    }
+    
+    
 }
