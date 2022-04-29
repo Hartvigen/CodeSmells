@@ -1,11 +1,71 @@
 using System;
+using allSmells;
 using Smells.CodeSmellExamples;
 using Smells.CodeSmellConstants;
+using TypeCheckingBase = Smells.CodeSmellExamples.TypeCheckingBase;
+using TypeCheckingGood = Smells.CodeSmellExamples.TypeCheckingGood;
 
 namespace Smells.CodeSmellDispatch
 {
     public class Dispatcher
     {
+        public void DispatchSuperSmell(string[] args)
+        {
+            bool typeChecking = false,
+                    inLine = false,
+                    repeatCond = false,
+                    deadLocalStore = false,
+                    duplicateCode = false,
+                    shortCircuit = false,
+                    featureEnvy = false,
+                    paramByValue = false,
+                    selfAssignment = false,
+                    redundantStorage = false,
+                    deadCode = false;
+
+            //Set given args to true so they are ran in the super smell
+            foreach (var arg in args)
+            {
+                switch (arg)
+                {
+                    case "dead-local-store":
+                        deadLocalStore = true;
+                        break;
+                    case "duplicate-code":
+                        deadLocalStore = true;
+                        break;
+                    case "feature-envy":
+                        featureEnvy = true;
+                        break;
+                    case "parameter-by-value":
+                        paramByValue = true;
+                        break;
+                    case "repeated-conditionals":
+                        repeatCond = true;
+                        break;
+                    case "self-assignment":
+                        selfAssignment = true;
+                        break;
+                    case "short-circuit":
+                        shortCircuit = true;
+                        break;
+                    case "type-checking":
+                        typeChecking = true;
+                        break;
+                    case "dead-code":
+                        deadCode = true;
+                        break;
+                    case "redundant-data-storage":
+                        redundantStorage = true;
+                        break;
+                    case "in-line":
+                        inLine = true;
+                        break;
+                }
+            }
+
+            SuperSmell.run(typeChecking, inLine, repeatCond, deadLocalStore, duplicateCode, shortCircuit, featureEnvy, paramByValue, selfAssignment, redundantStorage, deadCode);
+        }
         public void DispatchCodeSmell(string smell, string variant)
         {
             switch (smell)

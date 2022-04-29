@@ -11,14 +11,15 @@ namespace Smells
     {
         static void Main(string[] args1)
         {
-            //SuperSmell.run(true);
-            
             Args args = new Args(args1);
             Dispatcher Dispatch = new Dispatcher();
+            
 
             //Smells run if the corresponding boolean parameter is true, otherwise a non-smelly version runs
             if (args.getSmell() == "super-smell")
-                SuperSmell.run(true, true, true, true, true, true, true, true, true, true, true);
+            {
+                Dispatch.DispatchSuperSmell(args1);
+            }
             else
                 Dispatch.DispatchCodeSmell(args.getSmell(), args.getVariant());
         }
