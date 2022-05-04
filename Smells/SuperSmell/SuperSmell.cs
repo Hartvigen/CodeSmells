@@ -280,7 +280,7 @@ namespace allSmells
             List<Streamer> streamersIni;
             List<StreamerBase> streamers = new List<StreamerBase>();
 
-            using (var reader = new StreamReader("publish/twitch.csv"))
+            using (var reader = new StreamReader("twitch.csv"))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 streamersIni = csv.GetRecords<Streamer>().ToList();
