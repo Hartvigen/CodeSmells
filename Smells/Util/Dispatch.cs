@@ -11,7 +11,7 @@ namespace Smells.CodeSmellDispatch
     {
         public void DispatchSuperSmell(string[] args)
         {
-            int iterations = 5000; //5k
+            int iterations = 1000; //1k
             
             bool typeChecking = false,
                     inLine = false,
