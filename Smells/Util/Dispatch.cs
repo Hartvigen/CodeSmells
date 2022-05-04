@@ -11,6 +11,8 @@ namespace Smells.CodeSmellDispatch
     {
         public void DispatchSuperSmell(string[] args)
         {
+            int iterations = 5000000; 
+            
             bool typeChecking = false,
                     inLine = false,
                     repeatCond = false,
@@ -64,7 +66,9 @@ namespace Smells.CodeSmellDispatch
                 }
             }
 
-            SuperSmell.run(typeChecking, inLine, repeatCond, deadLocalStore, duplicateCode, shortCircuit, featureEnvy, paramByValue, selfAssignment, redundantStorage, deadCode);
+            Console.WriteLine("Starting super smell");
+            for (int i = 0; i < iterations; i++) SuperSmell.run(typeChecking, inLine, repeatCond, deadLocalStore, duplicateCode, shortCircuit, featureEnvy, paramByValue, selfAssignment, redundantStorage, deadCode);
+            Console.WriteLine("Done");
         }
         public void DispatchCodeSmell(string smell, string variant)
         {

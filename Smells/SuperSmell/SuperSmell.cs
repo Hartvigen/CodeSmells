@@ -319,6 +319,8 @@ namespace allSmells
     {
         public int UNPARTNERED = 0;
         public int PARTNERED = 1;
+
+        public double radiusOfFollowers;
         public abstract int GetTypeField();
         public abstract string GetTypeString();
 
@@ -336,14 +338,14 @@ namespace allSmells
         public int FollowersGained { get; set; }
         [Name("Views gained")]
         public int ViewsGained { get; set; }
-        [Name("Partnenred")]
+        [Name("Partnered")]
         public bool Partnered { get; set; }
         [Name("Mature")]
         public bool Mature { get; set; }
         [Name("Language")]
         public string Language { get; set; }
         
-        public double radiusOfFollowers { get; set; }
+        
 
     }
 
