@@ -1,0 +1,123 @@
+bad = the smell
+good = no-smells
+diff = the increase/decrease introduced with the bad variant
+
+###############################################
+### Dead local store
+
+Bad time: 4.37
+Bad power: 85.27
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.00 (0.00%)
+Diff power: 0.21 (0.25%)
+
+###############################################
+### Duplicate code
+
+Bad time: 4.38
+Bad power: 85.79
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.01 (0.23%)
+Diff power: 0.73 (0.85%)
+
+###############################################
+### Feature envy
+
+Bad time: 4.38
+Bad power: 86.33
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.01 (0.23%)
+Diff power: 1.27 (1.47%)
+
+###############################################
+### Parameter by value
+
+Bad time: 4.38
+Bad power: 86.28
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.01 (0.23%)
+Diff power: 1.22 (1.41%)
+
+###############################################
+### Repeated conditionals
+
+Bad time: 4.36
+Bad power: 85.65
+Good time: 4.37
+Good power: 85.06
+Diff time: -0.01 (-0.23%)
+Diff power: 0.59 (0.69%)
+
+###############################################
+### Self assignment
+
+Bad time: 4.38
+Bad power: 85.58
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.01 (0.23%)
+Diff power: 0.52 (0.61%)
+
+###############################################
+### Short circuit
+
+Bad time: 4.38
+Bad power: 85.6
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.01 (0.23%)
+Diff power: 0.54 (0.63%)
+
+###############################################
+### Type checking
+
+Bad time: 4.38
+Bad power: 85.23
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.01 (0.23%)
+Diff power: 0.17 (0.20%)
+
+###############################################
+### Redundant data storage
+
+Bad time: 5.3
+Bad power: 110.43
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.93 (17.55%)
+Diff power: 25.37 (22.97%)
+
+###############################################
+### Dead code
+
+Bad time: 4.38
+Bad power: 85.58
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.01 (0.23%)
+Diff power: 0.52 (0.61%)
+
+###############################################
+### In line method
+
+Bad time: 4.36
+Bad power: 85.15
+Good time: 4.37
+Good power: 85.06
+Diff time: -0.01 (-0.23%)
+Diff power: 0.09 (0.11%)
+
+###############################################
+### All smells
+
+Bad time: 5.35
+Bad power: 111.25
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.98 (18.32%)
+Diff power: 26.19 (23.54%)
