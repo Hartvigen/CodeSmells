@@ -2,7 +2,7 @@
 
 # smells to plot
 SMELLS=('dead-local-store' 'duplicate-code' 'feature-envy' 'god-class' 'long-method' 'parameter-by-value'
-        'repeated-conditionals' 'self-assignment' 'short-circuit' 'type-checking-rtti' 'type-checking-type-field' 'redundant-data-storage' 'dead-code' 'in-line')
+        'repeated-conditionals' 'self-assignment' 'short-circuit' 'type-checking' 'redundant-data-storage' 'dead-code' 'in-line' 'all-smells' 'no-smells')
 
 # first input param, base directory of results
 BASE_DIR="$1"
