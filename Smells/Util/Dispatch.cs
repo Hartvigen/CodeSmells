@@ -101,11 +101,17 @@ namespace Smells.CodeSmellDispatch
                 case "short-circuit":
                     RunShortCircuit(variant);
                     break;
-                case "type-checking-type-field":
-                    RunTypeCheckingTypeField(variant);
+                case "type-checking-type-field-ifelse":
+                    RunTypeCheckingTypeFieldIfElse(variant);
                     break;
-                case "type-checking-rtti":
-                    RunTypeCheckingRTTI(variant);
+                case "type-checking-type-field-switch":
+                    RunTypeCheckingTypeFieldSwitch(variant);
+                    break;
+                case "type-checking-rtti-instanceof":
+                    RunTypeCheckingRTTIInstanceOf(variant);
+                    break;
+                case "type-checking-rtti-getclass":
+                    RunTypeCheckingRTTIGetClass(variant);
                     break;
                 case "dead-code":
                     RunDeadCode(variant);
@@ -245,7 +251,7 @@ namespace Smells.CodeSmellDispatch
             Console.WriteLine("Done");
         }
 
-        private void RunTypeCheckingTypeField(string variant)
+        private void RunTypeCheckingTypeFieldIfElse(string variant)
         {
             int iterations = 500000000; // 500M
             Employee[] employeeTypes =
@@ -256,7 +262,30 @@ namespace Smells.CodeSmellDispatch
             };
 
             TypeCheckingBase TypeChecking;
-            if (variant == "bad") TypeChecking = new TypeCheckingTypeFieldBad();
+            if (variant == "bad") TypeChecking = new TypeCheckingTypeFieldBadIfElse();
+            else TypeChecking = new TypeCheckingGood();
+
+            Console.WriteLine("Running code smell Type Checking, variant " + variant);
+            for (int i = 0; i < iterations; i++)
+            {
+                TypeChecking.SetObj(employeeTypes[i % 3]);
+                TypeChecking.getType();
+            }
+            Console.WriteLine("Done");
+        }
+        
+        private void RunTypeCheckingTypeFieldSwitch(string variant)
+        {
+            int iterations = 500000000; // 500M
+            Employee[] employeeTypes =
+            {
+                new Engineer(),
+                new Salesman(),
+                new Director()
+            };
+
+            TypeCheckingBase TypeChecking;
+            if (variant == "bad") TypeChecking = new TypeCheckingTypeFieldBadSwitch();
             else TypeChecking = new TypeCheckingGood();
 
             Console.WriteLine("Running code smell Type Checking, variant " + variant);
@@ -268,7 +297,7 @@ namespace Smells.CodeSmellDispatch
             Console.WriteLine("Done");
         }
 
-        private void RunTypeCheckingRTTI(string variant)
+        private void RunTypeCheckingRTTIInstanceOf(string variant)
         {
             int iterations = 500000000; // 500M
             Employee[] employeeTypes =
@@ -279,7 +308,30 @@ namespace Smells.CodeSmellDispatch
             };
             
             TypeCheckingBase TypeChecking;
-            if (variant == "bad") TypeChecking = new TypeCheckingRTTIBad();
+            if (variant == "bad") TypeChecking = new TypeCheckingRTTIBadInstanceOf();
+            else TypeChecking = new TypeCheckingGood();
+
+            Console.WriteLine("Running code smell Type Checking, variant " + variant);
+            for (int i = 0; i < iterations; i++) 
+            {
+                TypeChecking.SetObj(employeeTypes[i % 3]);
+                TypeChecking.getType();
+            }
+            Console.WriteLine("Done");
+        }
+        
+        private void RunTypeCheckingRTTIGetClass(string variant)
+        {
+            int iterations = 500000000; // 500M
+            Employee[] employeeTypes =
+            {
+                new Engineer(),
+                new Salesman(),
+                new Director()
+            };
+            
+            TypeCheckingBase TypeChecking;
+            if (variant == "bad") TypeChecking = new TypeCheckingRTTIBadGetClass();
             else TypeChecking = new TypeCheckingGood();
 
             Console.WriteLine("Running code smell Type Checking, variant " + variant);

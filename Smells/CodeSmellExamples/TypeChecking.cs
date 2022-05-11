@@ -10,12 +10,12 @@ namespace Smells.CodeSmellExamples
         public abstract void SetObj(Employee newObj);
     }
 
-    class TypeCheckingTypeFieldBad : TypeCheckingBase
+    class TypeCheckingTypeFieldBadIfElse : TypeCheckingBase
     {
         private Employee obj { get; set; }
-        private int SALESMAN = 0;
-        private int ENGINEER = 1;
-        private int DIRECTOR = 2;
+        private const int SALESMAN = 0;
+        private const int ENGINEER = 1;
+        private const int DIRECTOR = 2;
 
         public override string getType()
         {
@@ -24,6 +24,35 @@ namespace Smells.CodeSmellExamples
             else if (this.obj.getTypeField() == SALESMAN) return "Salesman";
             else if (this.obj.getTypeField() == DIRECTOR) return "Director";
             else return "Error";
+        }
+        
+        public override void SetObj(Employee newObj)
+        {
+            obj = newObj;
+        }
+    }
+    
+    class TypeCheckingTypeFieldBadSwitch : TypeCheckingBase
+    {
+        private Employee obj { get; set; }
+        private const int SALESMAN = 0;
+        private const int ENGINEER = 1;
+        private const int DIRECTOR = 2;
+
+        public override string getType()
+        {
+            // user defined getType method
+            switch (this.obj.getTypeField())
+            {
+                case ENGINEER:
+                    return "Engineer";
+                case SALESMAN:
+                    return "Salesman";
+                case DIRECTOR:
+                    return "Director";
+                default:
+                    return "Error";
+            }
         }
         
         public override void SetObj(Employee newObj)
@@ -89,15 +118,33 @@ namespace Smells.CodeSmellExamples
         }
     }
 
-    public class TypeCheckingRTTIBad : TypeCheckingBase
+    public class TypeCheckingRTTIBadInstanceOf : TypeCheckingBase
     {
         private Employee obj { get; set; }
         public override string getType()
         {
             // built-in GetType method
-            if (this.obj.GetType() == typeof(Engineer)) return "Engineer";
-            else if (this.obj.GetType() == typeof(Salesman)) return "Salesman";
-            else if (this.obj.GetType() == typeof(Director)) return "Director";
+            if (obj is Engineer) return "Engineer";
+            else if (obj is Salesman) return "Salesman";
+            else if (obj is Director) return "Director";
+            else return "Error";
+        }
+        
+        public override void SetObj(Employee newObj)
+        {
+            obj = newObj;
+        }
+    }
+    
+    public class TypeCheckingRTTIBadGetClass : TypeCheckingBase
+    {
+        private Employee obj { get; set; }
+        public override string getType()
+        {
+            // built-in GetType method
+            if (obj.GetType() == typeof(Engineer)) return "Engineer";
+            else if (obj.GetType() == typeof(Salesman)) return "Salesman";
+            else if (obj.GetType() == typeof(Director)) return "Director";
             else return "Error";
         }
         

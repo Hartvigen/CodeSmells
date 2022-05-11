@@ -12,8 +12,10 @@ namespace Smells.CodeSmellConstants
             "repeated-conditionals",
             "self-assignment",
             "short-circuit",
-            "type-checking-type-field",
-            "type-checking-rtti",
+            "type-checking-type-field-ifelse",
+            "type-checking-type-field-switch",
+            "type-checking-rtti-instanceof",
+            "type-checking-rtti-getclass",
             "dead-code",
             "redundant-data-storage"
         };
