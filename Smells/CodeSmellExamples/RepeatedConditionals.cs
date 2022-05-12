@@ -13,13 +13,14 @@ namespace Smells.CodeSmellExamples
             int a = 100;
             int b = 200;
             int c = 20;
+            int d = 0;
 
             if (a * c > b) {
-                b = b + a;
-                b = b * c;
+                d = b + a;
+                b = d * c;
             }
 
-            int d = a * c + b;
+            d = a * c + b;
         }
     }
 
@@ -30,16 +31,17 @@ namespace Smells.CodeSmellExamples
             int a = 100;
             int b = 200;
             int c = 20;
+            int d = 0;
 
             if (a * c > b) {
-                b = b + a;
+                d = b + a;
             }
 
             if (a * c > b) {
-                b = b * c;
+                b = d * c;
             }
             
-            int d = a * c + b;
+            d = a * c + b;
         }
     }
 }
