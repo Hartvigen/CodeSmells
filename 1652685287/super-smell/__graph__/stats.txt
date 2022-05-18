@@ -111,13 +111,13 @@ Diff time: 0.03 (0.68%)
 Diff power: 0.68 (0.79%)
 
 ###############################################
-### FE-DuC-RC --- NEEDS RERUN
-Bad time: 6.62
-Bad power: 129.71
+### FE-DuC-RC --- RERUN DONE AT 1652867994
+Bad time: 4.44
+Bad power: 87.69
 Good time: 4.37
 Good power: 85.06
-Diff time: 2.25 (33.99%)
-Diff power: 44.65 (34.42%)
+Diff time: 0.07 (1.58%)
+Diff power: 2.63 (3.00%)
 
 ###############################################
 ### FE-PBV-DuC-RC-SC
