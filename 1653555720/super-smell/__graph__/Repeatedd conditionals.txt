@@ -1,0 +1,244 @@
+bad = the smell
+good = no-smells
+diff = the increase/decrease introduced with the bad variant
+
+###############################################
+### No-smells
+Bad time: 4.4
+Bad power: 85.1
+Good time: 4.37
+Good power: 85.06
+
+###############################################
+### FE-PBV
+Bad time: 4.4
+Bad power: 85.1
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.03 (0.68%)
+Diff power: 0.04 (0.05%)
+
+###############################################
+### FE-PBV-DuC
+Bad time: 4.41
+Bad power: 85.89
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.04 (0.91%)
+Diff power: 0.83 (0.97%)
+
+###############################################
+### FE-PBV-SC
+Bad time: 4.42
+Bad power: 86.48
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.05 (1.13%)
+Diff power: 1.42 (1.64%)
+
+###############################################
+### FE-RC
+Bad time: 4.41
+Bad power: 86.22
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.04 (0.91%)
+Diff power: 1.16 (1.35%)
+
+###############################################
+### FE-PBV-RC-SC
+Bad time: 4.42
+Bad power: 86.06
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.05 (1.13%)
+Diff power: 1.00 (1.16%)
+
+###############################################
+### FE-RC-SC
+Bad time: 4.42
+Bad power: 87.1
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.05 (1.13%)
+Diff power: 2.04 (2.34%)
+
+###############################################
+### PBV-DuC-RC
+Bad time: 4.43
+Bad power: 86.65
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.06 (1.35%)
+Diff power: 1.59 (1.83%)
+
+###############################################
+### DuC-SC
+Bad time: 4.42
+Bad power: 85.74
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.05 (1.13%)
+Diff power: 0.68 (0.79%)
+
+###############################################
+### PBV-SC
+Bad time: 4.42
+Bad power: 86.24
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.05 (1.13%)
+Diff power: 1.18 (1.37%)
+
+###############################################
+### PBV-DuC-SC
+Bad time: 4.43
+Bad power: 86.02
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.06 (1.35%)
+Diff power: 0.96 (1.12%)
+
+###############################################
+### FE-PBV-DuC-RC
+Bad time: 4.42
+Bad power: 86.2
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.05 (1.13%)
+Diff power: 1.14 (1.32%)
+
+###############################################
+### FE-DuC
+Bad time: 4.4
+Bad power: 85.74
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.03 (0.68%)
+Diff power: 0.68 (0.79%)
+
+###############################################
+### FE-DuC-RC --- RERUN DONE AT 1652867994
+Bad time: 4.44
+Bad power: 87.69
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.07 (1.58%)
+Diff power: 2.63 (3.00%)
+
+###############################################
+### FE-PBV-DuC-RC-SC
+Bad time: 4.43
+Bad power: 86.55
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.06 (1.35%)
+Diff power: 1.49 (1.72%)
+
+###############################################
+### PBV-RC-SC
+Bad time: 4.43
+Bad power: 86.39
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.06 (1.35%)
+Diff power: 1.33 (1.54%)
+
+###############################################
+### FE-DuC-SC
+Bad time: 4.41
+Bad power: 86.7
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.04 (0.91%)
+Diff power: 1.64 (1.89%)
+
+###############################################
+### FE-PBV-DuC-SC
+Bad time: 4.42
+Bad power: 86.03
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.05 (1.13%)
+Diff power: 0.97 (1.13%)
+
+###############################################
+### PBV-RC
+Bad time: 4.42
+Bad power: 86.44
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.05 (1.13%)
+Diff power: 1.38 (1.60%)
+
+###############################################
+### PBV-DuC-RC-SC
+Bad time: 4.43
+Bad power: 86.57
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.06 (1.35%)
+Diff power: 1.51 (1.74%)
+
+###############################################
+### FE-SC
+Bad time: 4.41
+Bad power: 85.9
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.04 (0.91%)
+Diff power: 0.84 (0.98%)
+
+###############################################
+### PBV-DuC
+Bad time: 4.42
+Bad power: 86.04
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.05 (1.13%)
+Diff power: 0.98 (1.14%)
+
+###############################################
+### FE-PBV-RC
+Bad time: 4.42
+Bad power: 86.26
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.05 (1.13%)
+Diff power: 1.20 (1.39%)
+
+###############################################
+### DuC-RC-SC
+Bad time: 4.43
+Bad power: 86.19
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.06 (1.35%)
+Diff power: 1.13 (1.31%)
+
+###############################################
+### RC-SC
+Bad time: 4.42
+Bad power: 85.87
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.05 (1.13%)
+Diff power: 0.81 (0.94%)
+
+###############################################
+### DuC-RC
+Bad time: 4.42
+Bad power: 85.86
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.05 (1.13%)
+Diff power: 0.80 (0.93%)
+
+###############################################
+### FE-DuC-RC-SC
+Bad time: 4.42
+Bad power: 86.19
+Good time: 4.37
+Good power: 85.06
+Diff time: 0.05 (1.13%)
+Diff power: 1.13 (1.31%)
