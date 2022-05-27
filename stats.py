@@ -8,10 +8,10 @@ Input in order:
     good power
 """
 
-bad_time = float(sys.argv[1])
-bad_power = float(sys.argv[3])
-good_time = float(sys.argv[2])
-good_power = float(sys.argv[4])
+bad_time = float(sys.argv[3])
+bad_power = float(sys.argv[4])
+good_time = float(sys.argv[1])
+good_power = float(sys.argv[2])
 
 diff_time = bad_time - good_time
 diff_power = bad_power - good_power
