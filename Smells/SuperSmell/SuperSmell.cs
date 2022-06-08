@@ -200,19 +200,6 @@ namespace allSmells
                     doubleFollowers = totalFollowers * 2;
                 }
                 
-                
-                //Redundant Storage
-                if (redundantStorage)
-                {
-                    Console.WriteLine("Redundant smell!");
-                }
-                
-                else
-                {
-                    
-                }
-                
-                
                 //Dead Code
                 int a = 5;
                 int b = 10;
@@ -236,6 +223,20 @@ namespace allSmells
                 {
                     if (a > b) c = c * 2;
                 }
+            }
+            //Redundant Storage
+            if (redundantStorage)
+            {
+                var streamers2 = streamers;
+                streamers2.Sort();
+                var streamers3 = streamers2;
+                streamers = streamers3;
+
+            }
+                
+            else
+            {
+                streamers.Sort();
             }
         }
 
